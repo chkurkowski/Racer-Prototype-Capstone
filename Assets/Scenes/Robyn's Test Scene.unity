@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   suspensionLength: 0.5
-  suspensionForce: 20
+  suspensionForce: 50
 --- !u!1 &940488505
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,7 +524,7 @@ MonoBehaviour:
   driveForce: 10000
   brakeForce: 100
   turnForce: 0.1
-  carGrip: 50
+  carGrip: 0.05
 --- !u!1 &1009871192
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,7 +660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   suspensionLength: 0.5
-  suspensionForce: 20
+  suspensionForce: 50
 --- !u!1 &1527829362
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,7 +705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   suspensionLength: 0.5
-  suspensionForce: 20
+  suspensionForce: 50
 --- !u!1 &1604034857
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,4 +750,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   suspensionLength: 0.5
-  suspensionForce: 20
+  suspensionForce: 50

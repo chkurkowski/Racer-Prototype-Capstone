@@ -4,21 +4,34 @@ using UnityEngine;
 
 public class CarPhysicsBehavior : MonoBehaviour
 {
-
+    //list of suspension points and driving points, not currently used, but could be useful for checking if the car is making a jump 
+    //or for making frontwheel vs rearwheel drive vehicles later
     public List<SuspensionPoint> suspension;
     public List<SuspensionPoint> drivingPoints;
-    private Vector3 downForce;
+
+    //Downward force applied to vehicle to keep it on the ground
+    private float downForce = 100;
+
+    //Call for the rigidbody of the car
     private Rigidbody carRB;
 
+
+    //The transform position where driving and braking forces are applies
     public Transform drivePos;
 
+    //forces applied by each action
     public float driveForce, brakeForce, turnForce;
 
+    //the input fields for each action
     private float driveInput, brakeInput, turnInput;
 
+    //the grip value that controls how much the car slides when turning
     public float carGrip;
 
+    //current speed
     float currSpeed;
+
+    //The forward value without the upward component
     Vector3 flatFwd;
 
     private void Awake()
@@ -51,7 +64,8 @@ public class CarPhysicsBehavior : MonoBehaviour
                 new Vector3(transform.position.x + (Random.value * 5), transform.position.y + (Random.value * 5), transform.position.z + (Random.value * 5)),
                 ForceMode.Impulse);
         }
-        
+
+        carRB.AddForce(-transform.up * downForce, ForceMode.Acceleration);
 
         //calculates out the forward vector of the vehicle so it won't fly upward when throttle is applied
         Vector3 carFwd = transform.TransformDirection(Vector3.forward);
