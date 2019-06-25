@@ -790,7 +790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToFollow: {fileID: 4013072985563821}
-  offest: {x: 0, y: 6, z: -14}
+  offest: {x: 0, y: 3, z: -6.9}
   followSpeed: 10
   lookSpeed: 10
 --- !u!1 &1167522247
