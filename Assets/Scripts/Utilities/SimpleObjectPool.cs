@@ -9,6 +9,35 @@ class SimpleObjectPool : MonoBehaviour
 	const int DEFAULT_POOL_SIZE = 5;
 
 	///Summary
+	///Singleton value
+	///Summary
+	private static SimpleObjectPool instance;
+
+	///Summary
+	///Singleton function, only instantiate the object when it needs to
+	///Summary
+	public SimpleObjectPool Instance()
+	{
+		if(instance == null)
+		{
+			instance = this;
+			DontDestroyOnLoad(this);
+		}
+
+		return instance;
+	}
+
+	void Awake()
+	{
+		if(instance != null)
+		{
+			Destroy(this);
+		}
+
+		Instance();
+	}
+
+	///Summary
 	///The class that holds the individual prefabs and inactive items.
 	///Summary
 	class Pool
