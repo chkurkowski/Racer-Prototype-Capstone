@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 5702006442580847551}
   - component: {fileID: 5702006442580847547}
   - component: {fileID: 5702006442580847546}
+  - component: {fileID: 284157461}
   m_Layer: 0
-  m_Name: BasicPhysicsCar
+  m_Name: Robyn'sCar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,17 +128,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0420b097e0f6a1d4b8f5d3582bb526de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  suspension:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  drivingPoints: []
   drivePos: {fileID: 5702006442841620564}
   driveForce: 10000
   brakeForce: 100
   turnForce: 0.1
   carGrip: 0.05
+--- !u!114 &284157461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5702006442580847548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0269cee522501470f9ef8fbf20c954a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostTime: 5
+  boostAmount: 5000
+  accelerationAdd: 1000
+  decelerationSub: 100
 --- !u!1 &5702006442661303053
 GameObject:
   m_ObjectHideFlags: 0

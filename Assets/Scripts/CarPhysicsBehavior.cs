@@ -6,8 +6,8 @@ public class CarPhysicsBehavior : MonoBehaviour
 {
     //list of suspension points and driving points, not currently used, but could be useful for checking if the car is making a jump 
     //or for making frontwheel vs rearwheel drive vehicles later
-   // public List<SuspensionPoint> suspension;
-   // public List<SuspensionPoint> drivingPoints;
+    //public List<SuspensionPoint> suspension;
+    //public List<SuspensionPoint> drivingPoints;
 
     //Downward force applied to vehicle to keep it on the ground
     private float downForce = 100;
