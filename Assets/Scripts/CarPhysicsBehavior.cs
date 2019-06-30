@@ -22,6 +22,9 @@ public class CarPhysicsBehavior : MonoBehaviour
     //forces applied by each action
     public float driveForce, brakeForce, turnForce;
 
+    [Range(0, -1)]
+    public float reverseSpeed = -0.25f;
+
     //the input fields for each action
     private float driveInput, brakeInput, turnInput;
 
@@ -54,7 +57,7 @@ public class CarPhysicsBehavior : MonoBehaviour
 
 
         //clamps braking and throttle inputs to needed values
-        driveInput = Mathf.Clamp(driveInput, 0, 1);
+        driveInput = Mathf.Clamp(driveInput, reverseSpeed, 1);
         brakeInput = Mathf.Clamp(brakeInput, -1, 0);
 
         //Testing method, launches the car into the air on button press to test suspension
