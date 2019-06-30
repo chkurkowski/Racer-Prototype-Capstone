@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostTime: 5
-  boostAmount: 5000
+  boostAmount: 7000
   accelerationAdd: 1000
   decelerationSub: 100
 --- !u!1 &5702006442661303053
