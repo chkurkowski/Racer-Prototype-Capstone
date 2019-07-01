@@ -17,13 +17,16 @@ public class BoostBehavior : MonoBehaviour
     //string for controller support
     public string boostAxis;
 
+    //gameObject to access specific camera for each player
+    public GameObject camera;
+
     // Start is called before the first frame update
     void Start()
     {
         // Sets variables for gameplay
         canBoost = true;
         carScript = GetComponent<CarPhysicsBehavior>();
-        mainCamera = GameObject.Find("Main Camera").GetComponent<SimpleCameraFollow>();
+        mainCamera = camera.GetComponent<SimpleCameraFollow>();
         iniSpeed = carScript.driveForce;
         boostCharge = iniSpeed + boostAmount;
     }
