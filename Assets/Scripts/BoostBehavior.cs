@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BoostBehavior : MonoBehaviour
 {
-    public int boostTime;
-    public float boostAmount;
-    public float accelerationAdd;
-    public float decelerationSub;
+    public int boostTime = 5;
+    public float boostAmount = 7000;
+    public float accelerationAdd = 1000;
+    public float decelerationSub = 100;
     private float boostCharge;
     private float iniSpeed;
     private bool canBoost;
@@ -20,7 +20,7 @@ public class BoostBehavior : MonoBehaviour
         // Sets variables for gameplay
         canBoost = true;
         carScript = GetComponent<CarPhysicsBehavior>();
-        mainCamera = GameObject.Find("Main Camera").GetComponent<SimpleCameraFollow>();
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SimpleCameraFollow>();
         iniSpeed = carScript.driveForce;
         boostCharge = iniSpeed + boostAmount;
     }
