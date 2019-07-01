@@ -582,6 +582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0420b097e0f6a1d4b8f5d3582bb526de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  downForce: 100
   drivePos: {fileID: 1713012364}
   driveForce: 10000
   brakeForce: 100
@@ -1279,7 +1280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToFollow: {fileID: 685411647}
   offest: {x: 0, y: 6, z: -14}
-  followSpeed: 10
+  followSpeed: 34
   lookSpeed: 10
 --- !u!81 &1261449077
 AudioListener:
@@ -1344,7 +1345,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 97.44, z: 0}
 --- !u!1001 &1298872838
 PrefabInstance:
@@ -1487,7 +1488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToFollow: {fileID: 2128777607}
   offest: {x: 0, y: 6, z: -14}
-  followSpeed: 10
+  followSpeed: 34
   lookSpeed: 10
 --- !u!20 &1412821735
 Camera:
@@ -1544,7 +1545,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 97.44, z: 0}
 --- !u!1 &1415818594
 GameObject:
@@ -1579,6 +1580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0420b097e0f6a1d4b8f5d3582bb526de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  downForce: 100
   drivePos: {fileID: 854332972}
   driveForce: 10000
   brakeForce: 100
@@ -3007,6 +3009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0420b097e0f6a1d4b8f5d3582bb526de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  downForce: 100
   drivePos: {fileID: 1110092151}
   driveForce: 10000
   brakeForce: 100
@@ -3111,7 +3114,7 @@ Transform:
   - {fileID: 453740568}
   - {fileID: 1530976981}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2128777608
 MonoBehaviour:
