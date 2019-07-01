@@ -37,6 +37,11 @@ public class CarPhysicsBehavior : MonoBehaviour
     //The forward value without the upward component
     Vector3 flatFwd;
 
+    //Input Axis for controller support
+    public string horizontalAxis;
+    public string verticalAxis;
+
+
     private void Awake()
     {
         //stores the rigidbody value of the car
@@ -52,8 +57,8 @@ public class CarPhysicsBehavior : MonoBehaviour
 
     private void FixedUpdate()
     {
-        driveInput = brakeInput = Input.GetAxis("Vertical");
-        turnInput = Input.GetAxis("Horizontal");
+        driveInput = brakeInput = Input.GetAxis(verticalAxis);
+        turnInput = Input.GetAxis(horizontalAxis);
 
 
         //clamps braking and throttle inputs to needed values

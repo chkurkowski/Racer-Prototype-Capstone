@@ -14,6 +14,9 @@ public class BoostBehavior : MonoBehaviour
     private CarPhysicsBehavior carScript;
     private SimpleCameraFollow mainCamera;
 
+    //string for controller support
+    public string boostAxis;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +32,7 @@ public class BoostBehavior : MonoBehaviour
     void Update()
     {
         // Checks for Boost Input and calls corutine if possible
-        if (Input.GetButtonDown("Fire2") && canBoost)
+        if (Input.GetButtonDown(boostAxis) && canBoost)
         {
             canBoost = false;
             StartCoroutine(Boost());
