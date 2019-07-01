@@ -39,7 +39,7 @@ public class CarPhysicsBehavior : MonoBehaviour
 
     //Input Axis for controller support
     public string horizontalAxis; //left stick
-   // public string verticalAxis;// W and S
+    //public string verticalAxis;// W and S
     public string verticalForwardAxis;//right trigger
     public string verticalBackwardAxis;//left trigger
     public float forwardInput;
@@ -68,10 +68,10 @@ public class CarPhysicsBehavior : MonoBehaviour
 
 
         //clamps braking and throttle inputs to needed values
-        driveInput = Mathf.Clamp(driveInput, reverseSpeed, 1);
+        driveInput = Mathf.Clamp(driveInput, -reverseSpeed, 1);
         brakeInput = Mathf.Clamp(brakeInput, -1, 0);
         //clamping for controller triggers, probably isn't needed.
-        //forwardInput = Mathf.Clamp(forwardInput, 0, 1);
+        forwardInput = Mathf.Clamp(forwardInput, -reverseSpeed, 1);
        // backwardInput = Mathf.Clamp(backwardInput, 0, 1);
 
         //Testing method, launches the car into the air on button press to test suspension
@@ -100,7 +100,7 @@ public class CarPhysicsBehavior : MonoBehaviour
     //applies forward force based on inputs
     public void throttle()
     {
-        if(forwardInput > 0f)
+        /*if(forwardInput > 0f)
         {
             Debug.Log("Right Trigger was pressed!");
             carRB.AddForceAtPosition(flatFwd * driveForce * forwardInput * Time.deltaTime, drivePos.position); // Right Trigger
@@ -110,8 +110,9 @@ public class CarPhysicsBehavior : MonoBehaviour
             Debug.Log("Left Trigger was pressed!");
             carRB.AddForceAtPosition(flatFwd * driveForce * (-backwardInput * reverseSpeed) * Time.deltaTime, drivePos.position); // Left Trigger
 
-        }
+        }*/
         // carRB.AddForceAtPosition(flatFwd * driveForce * driveInput * Time.deltaTime, drivePos.position); //used for W and S
+        carRB.AddForceAtPosition(flatFwd * driveForce * forwardInput * Time.deltaTime, drivePos.position); //used for W and S and arrow keys
 
     }
 
