@@ -9,8 +9,8 @@ InputManager:
     m_Name: Horizontal
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: left
-    positiveButton: right
+    negativeButton: 
+    positiveButton: 
     altNegativeButton: a
     altPositiveButton: d
     gravity: 3
@@ -18,15 +18,15 @@ InputManager:
     sensitivity: 0.5
     snap: 0
     invert: 0
-    type: 2
+    type: 0
     axis: 0
     joyNum: 1
   - serializedVersion: 3
     m_Name: VerticalForward
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: down
-    positiveButton: up
+    negativeButton: 
+    positiveButton: 
     altNegativeButton: s
     altPositiveButton: w
     gravity: 3
@@ -34,8 +34,8 @@ InputManager:
     sensitivity: 3
     snap: 0
     invert: 0
-    type: 2
-    axis: 9
+    type: 0
+    axis: 1
     joyNum: 1
   - serializedVersion: 3
     m_Name: Fire1
@@ -58,7 +58,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 1 button 0
+    positiveButton: left shift
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -74,7 +74,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 2 button 0
+    positiveButton: right shift
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -297,8 +297,8 @@ InputManager:
     m_Name: HorizontalP2
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: escape
+    negativeButton: left
+    positiveButton: right
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
@@ -306,15 +306,15 @@ InputManager:
     sensitivity: 0.5
     snap: 0
     invert: 0
-    type: 2
+    type: 0
     axis: 0
     joyNum: 2
   - serializedVersion: 3
     m_Name: VerticalForwardP2
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: 
+    negativeButton: down
+    positiveButton: up
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
@@ -322,15 +322,15 @@ InputManager:
     sensitivity: 3
     snap: 0
     invert: 0
-    type: 2
+    type: 0
     axis: 9
     joyNum: 2
   - serializedVersion: 3
     m_Name: VerticalBackwards
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: 
+    negativeButton: up
+    positiveButton: down
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
@@ -346,7 +346,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: 
+    positiveButton: down
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
