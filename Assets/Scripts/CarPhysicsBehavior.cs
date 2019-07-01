@@ -10,7 +10,7 @@ public class CarPhysicsBehavior : MonoBehaviour
     //public List<SuspensionPoint> drivingPoints;
 
     //Downward force applied to vehicle to keep it on the ground
-    private float downForce = 100;
+    public float downForce = 100;
 
     //Call for the rigidbody of the car
     private Rigidbody carRB;
@@ -68,7 +68,7 @@ public class CarPhysicsBehavior : MonoBehaviour
                 ForceMode.Impulse);
         }
 
-        carRB.AddForce(-transform.up * downForce, ForceMode.Acceleration);
+        carRB.AddForce(-Vector3.up * downForce, ForceMode.Acceleration);
 
         //calculates out the forward vector of the vehicle so it won't fly upward when throttle is applied
         Vector3 carFwd = transform.TransformDirection(Vector3.forward);
