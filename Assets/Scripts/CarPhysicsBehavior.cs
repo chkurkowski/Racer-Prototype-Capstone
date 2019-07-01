@@ -22,8 +22,8 @@ public class CarPhysicsBehavior : MonoBehaviour
     //forces applied by each action
     public float driveForce, brakeForce, turnForce;
 
-    [Range(0, -1)]
-    public float reverseSpeed = -0.25f;
+    [Range(0, 1)]
+    public float reverseSpeed = 0.25f;
 
     //the input fields for each action
     private float driveInput, brakeInput, turnInput;
@@ -38,9 +38,12 @@ public class CarPhysicsBehavior : MonoBehaviour
     Vector3 flatFwd;
 
     //Input Axis for controller support
-    public string horizontalAxis;
-    public string verticalAxis;
-
+    public string horizontalAxis; //left stick
+   // public string verticalAxis;// W and S
+    public string verticalForwardAxis;//right trigger
+    public string verticalBackwardAxis;//left trigger
+    public float forwardInput;
+    public float backwardInput;
 
     private void Awake()
     {
@@ -57,13 +60,19 @@ public class CarPhysicsBehavior : MonoBehaviour
 
     private void FixedUpdate()
     {
-        driveInput = brakeInput = Input.GetAxis(verticalAxis);
+       // driveInput = brakeInput = Input.GetAxis(verticalAxis);
         turnInput = Input.GetAxis(horizontalAxis);
+
+        forwardInput = Input.GetAxis(verticalForwardAxis);
+        backwardInput = Input.GetAxis(verticalBackwardAxis);
 
 
         //clamps braking and throttle inputs to needed values
         driveInput = Mathf.Clamp(driveInput, reverseSpeed, 1);
         brakeInput = Mathf.Clamp(brakeInput, -1, 0);
+        //clamping for controller triggers, probably isn't needed.
+        //forwardInput = Mathf.Clamp(forwardInput, 0, 1);
+       // backwardInput = Mathf.Clamp(backwardInput, 0, 1);
 
         //Testing method, launches the car into the air on button press to test suspension
         if (Input.GetKeyDown(KeyCode.Space))
@@ -91,8 +100,18 @@ public class CarPhysicsBehavior : MonoBehaviour
     //applies forward force based on inputs
     public void throttle()
     {
-        
-        carRB.AddForceAtPosition(flatFwd * driveForce * driveInput * Time.deltaTime, drivePos.position);
+        if(forwardInput > 0f)
+        {
+            Debug.Log("Right Trigger was pressed!");
+            carRB.AddForceAtPosition(flatFwd * driveForce * forwardInput * Time.deltaTime, drivePos.position); // Right Trigger
+        }
+        else if(backwardInput > 0f)
+        {
+            Debug.Log("Left Trigger was pressed!");
+            carRB.AddForceAtPosition(flatFwd * driveForce * (-backwardInput * reverseSpeed) * Time.deltaTime, drivePos.position); // Left Trigger
+
+        }
+        // carRB.AddForceAtPosition(flatFwd * driveForce * driveInput * Time.deltaTime, drivePos.position); //used for W and S
 
     }
 

@@ -586,10 +586,11 @@ MonoBehaviour:
   driveForce: 10000
   brakeForce: 100
   turnForce: 0.1
-  reverseSpeed: -0.25
+  reverseSpeed: 0.25
   carGrip: 0.05
   horizontalAxis: Horizontal
-  verticalAxis: Vertical
+  verticalForwardAxis: VerticalForward
+  verticalBackwardAxis: VerticalBackwards
 --- !u!54 &685411643
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1583,7 +1584,8 @@ MonoBehaviour:
   reverseSpeed: -0.25
   carGrip: 0.05
   horizontalAxis: 
-  verticalAxis: 
+  verticalForwardAxis: 
+  verticalBackwardAxis: 
 --- !u!54 &1415818596
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3005,10 +3007,11 @@ MonoBehaviour:
   driveForce: 10000
   brakeForce: 100
   turnForce: 0.1
-  reverseSpeed: -0.25
+  reverseSpeed: 0.25
   carGrip: 0.05
   horizontalAxis: HorizontalP2
-  verticalAxis: VerticalP2
+  verticalForwardAxis: VerticalForwardP2
+  verticalBackwardAxis: VerticalBackwardsP2
 --- !u!54 &2128777603
 Rigidbody:
   m_ObjectHideFlags: 0
