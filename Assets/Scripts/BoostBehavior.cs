@@ -20,6 +20,9 @@ public class BoostBehavior : MonoBehaviour
     //gameObject to access specific camera for each player
     public GameObject camera;
 
+    //temporary object enabled/disabled based on boost state
+    public GameObject tempBoostVisual;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +47,8 @@ public class BoostBehavior : MonoBehaviour
     
     private IEnumerator Boost()
     {
+        tempBoostVisual.SetActive(true);
+        
         while (carScript.driveForce < boostCharge)
         {
             // Lerps the camera follow speed to be slower
@@ -56,7 +61,9 @@ public class BoostBehavior : MonoBehaviour
         }
 
         // Time while max boost is active
+        
         yield return new WaitForSeconds(boostTime);
+        tempBoostVisual.SetActive(false);
 
         while (carScript.driveForce > iniSpeed)
         {
