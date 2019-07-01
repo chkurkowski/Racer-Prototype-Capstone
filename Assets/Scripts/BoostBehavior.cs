@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class BoostBehavior : MonoBehaviour
 {
-    public int boostTime = 5;
-    public float boostAmount = 7000;
-    public float accelerationAdd = 1000;
-    public float decelerationSub = 100;
+    public int boostTime;
+    public float boostAmount;
+    public float accelerationAdd;
+    public float decelerationSub;
     private float boostCharge;
     private float iniSpeed;
     private bool canBoost;
     private CarPhysicsBehavior carScript;
     private SimpleCameraFollow mainCamera;
+
+    //string for controller support
+    public string boostAxis;
+
+    //gameObject to access specific camera for each player
+    public GameObject camera;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +26,7 @@ public class BoostBehavior : MonoBehaviour
         // Sets variables for gameplay
         canBoost = true;
         carScript = GetComponent<CarPhysicsBehavior>();
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<SimpleCameraFollow>();
+        mainCamera = camera.GetComponent<SimpleCameraFollow>();
         iniSpeed = carScript.driveForce;
         boostCharge = iniSpeed + boostAmount;
     }
@@ -29,7 +35,7 @@ public class BoostBehavior : MonoBehaviour
     void Update()
     {
         // Checks for Boost Input and calls corutine if possible
-        if (Input.GetButtonDown("Fire2") && canBoost)
+        if (Input.GetButtonDown(boostAxis) && canBoost)
         {
             canBoost = false;
             StartCoroutine(Boost());
