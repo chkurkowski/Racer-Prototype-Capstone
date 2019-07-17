@@ -15,6 +15,7 @@ public class CarPhysicsBehavior : MonoBehaviour
     //Call for the rigidbody of the car
     private Rigidbody carRB;
 
+    public bool isOverheated = false; // Borissov - Whether or not the car is overheated. (7-15-2019)
 
     //The transform position where driving and braking forces are applies
     public Transform drivePos;
@@ -45,6 +46,9 @@ public class CarPhysicsBehavior : MonoBehaviour
     public float forwardInput;
     public float backwardInput;
 
+    private CarHeatBehaviour carHeatManager;
+
+
     private void Awake()
     {
         //stores the rigidbody value of the car
@@ -55,6 +59,7 @@ public class CarPhysicsBehavior : MonoBehaviour
     private void Start()
     {
         //lowers the center of mass of the vehicle to limit flipping
+        carHeatManager = gameObject.GetComponent<CarHeatBehaviour>();
         carRB.centerOfMass = new Vector3(0, -1, 0);
     }
 
@@ -112,7 +117,11 @@ public class CarPhysicsBehavior : MonoBehaviour
 
         }*/
         // carRB.AddForceAtPosition(flatFwd * driveForce * driveInput * Time.deltaTime, drivePos.position); //used for W and S
-        carRB.AddForceAtPosition(flatFwd * driveForce * forwardInput * Time.deltaTime, drivePos.position); //used for W and S and arrow keys
+
+        if(!carHeatManager.isOverheated) // Borissov - 7/15/2019
+        {
+            carRB.AddForceAtPosition(flatFwd * driveForce * forwardInput * Time.deltaTime, drivePos.position); //used for W and S and arrow keys
+        }
 
     }
 

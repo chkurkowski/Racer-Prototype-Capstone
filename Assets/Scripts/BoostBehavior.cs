@@ -14,6 +14,8 @@ public class BoostBehavior : MonoBehaviour
     private CarPhysicsBehavior carScript;
     private SimpleCameraFollow mainCamera;
 
+    private CarHeatBehaviour carHeatManager; // Borissov - (7-15-2019)
+
     //string for controller support
     public string boostAxis;
 
@@ -30,6 +32,7 @@ public class BoostBehavior : MonoBehaviour
         canBoost = true;
         carScript = GetComponent<CarPhysicsBehavior>();
         mainCamera = camera.GetComponent<SimpleCameraFollow>();
+        carHeatManager = gameObject.GetComponent<CarHeatBehaviour>();
         iniSpeed = carScript.driveForce;
         boostCharge = iniSpeed + boostAmount;
     }
@@ -38,13 +41,13 @@ public class BoostBehavior : MonoBehaviour
     void Update()
     {
         // Checks for Boost Input and calls corutine if possible
-        if (Input.GetButtonDown(boostAxis) && canBoost)
+        if (Input.GetButtonDown(boostAxis) && canBoost && !carHeatManager.isOverheated)
         {
             canBoost = false;
             StartCoroutine(Boost());
         }
     }
-    
+
     private IEnumerator Boost()
     {
         tempBoostVisual.SetActive(true);
