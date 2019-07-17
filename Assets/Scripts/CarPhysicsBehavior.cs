@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CarPhysicsBehavior : MonoBehaviour
 {
-    //list of suspension points and driving points, not currently used, but could be useful for checking if the car is making a jump 
+    //list of suspension points and driving points, not currently used, but could be useful for checking if the car is making a jump
     //or for making frontwheel vs rearwheel drive vehicles later
     //public List<SuspensionPoint> suspension;
     //public List<SuspensionPoint> drivingPoints;
@@ -23,6 +23,12 @@ public class CarPhysicsBehavior : MonoBehaviour
     //forces applied by each action
     public float driveForce, brakeForce, turnForce;
 
+    float deadZone = .1f;
+
+    public GameObject[] hoverPoints;
+
+    public float groundedDrag = 3.0f;
+
     [Range(0, 1)]
     public float reverseSpeed = 0.25f;
 
@@ -34,6 +40,25 @@ public class CarPhysicsBehavior : MonoBehaviour
 
     //current speed
     float currSpeed;
+
+
+    //checks how "compressed" each point is, 0 for fully extended, 1 for fully compressed
+    private float compression;
+
+
+    GameObject suspensionPoint;
+
+    //value for how long each suspension point should be
+    public float suspensionLength = 3;
+
+    //how much force is applied to keep vehicle lifted
+    public float suspensionForce = 50;
+
+
+    public bool grounded;
+
+
+    public float maxSpeed = 500.0f;
 
     //The forward value without the upward component
     Vector3 flatFwd;
@@ -53,7 +78,7 @@ public class CarPhysicsBehavior : MonoBehaviour
     {
         //stores the rigidbody value of the car
         carRB = GetComponent<Rigidbody>();
-       
+
     }
 
     private void Start()
@@ -66,7 +91,7 @@ public class CarPhysicsBehavior : MonoBehaviour
     private void FixedUpdate()
     {
        // driveInput = brakeInput = Input.GetAxis(verticalAxis);
-        turnInput = Input.GetAxis(horizontalAxis);
+        turnInput = Input.GetAxis("Horizontal");
 
         forwardInput = Input.GetAxis(verticalForwardAxis);
         backwardInput = Input.GetAxis(verticalBackwardAxis);
@@ -82,10 +107,55 @@ public class CarPhysicsBehavior : MonoBehaviour
         //Testing method, launches the car into the air on button press to test suspension
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            carRB.AddForceAtPosition(Vector3.up * 15, 
+            carRB.AddForceAtPosition(Vector3.up * 15,
                 new Vector3(transform.position.x + (Random.value * 5), transform.position.y + (Random.value * 5), transform.position.z + (Random.value * 5)),
                 ForceMode.Impulse);
         }
+
+
+        //Checks if the car is touching the ground at all positions
+        grounded = false;
+
+        //Consolidated suspension system into this script. Draws a downward raycast at each point to check for collisions and applies an upward force if one is found.
+        for (int i = 0; i < hoverPoints.Length; i++)
+        {
+            suspensionPoint = hoverPoints[i];
+
+            Ray ray = new Ray(suspensionPoint.transform.position, -transform.up);
+            RaycastHit hit;
+
+            Debug.DrawRay(suspensionPoint.transform.position, -transform.up, Color.red);
+
+
+
+            if (Physics.Raycast(ray, out hit, suspensionLength))
+            {
+                compression = (suspensionLength - hit.distance) / suspensionLength;
+                grounded = true;
+            }
+            else
+            {
+                compression = 0;
+            }
+
+            if (compression > 0)
+            {
+                Vector3 force = Vector3.up * compression * suspensionForce;
+                carRB.AddForceAtPosition(force, transform.position, ForceMode.Acceleration);
+            }
+        }
+
+        //adjusts drag value based on if car is in the air or on the ground
+        if (grounded)
+        {
+            carRB.drag = groundedDrag;
+        }
+        else
+        {
+            carRB.drag = 0.1f;
+        }
+
+
 
         carRB.AddForce(-Vector3.up * downForce, ForceMode.Acceleration);
 
@@ -100,6 +170,12 @@ public class CarPhysicsBehavior : MonoBehaviour
         turn();
         slideControl();
 
+
+        //Checks if car is above the max speed and reduces it's velocity if so
+        if (carRB.velocity.sqrMagnitude > (carRB.velocity.normalized * maxSpeed).sqrMagnitude)
+        {
+            carRB.velocity = carRB.velocity.normalized * maxSpeed;
+        }
     }
 
     //applies forward force based on inputs
@@ -123,6 +199,10 @@ public class CarPhysicsBehavior : MonoBehaviour
             carRB.AddForceAtPosition(flatFwd * driveForce * forwardInput * Time.deltaTime, drivePos.position); //used for W and S and arrow keys
         }
 
+        if (forwardInput > deadZone)
+        {
+            carRB.AddForce(flatFwd * driveForce * forwardInput); //used for W and S and arrow keys
+        }
     }
 
     //applies backward force based on inputs
@@ -139,9 +219,13 @@ public class CarPhysicsBehavior : MonoBehaviour
     public void turn()
     {
 
-        Vector3 turnVec = ((transform.up * turnForce) * turnInput) * 800.0f;
+        //Vector3 turnVec = ((transform.up * turnForce) * turnInput) * 800.0f;
 
-        carRB.AddTorque(turnVec);
+        //carRB.AddTorque(turnVec);
+        if (turnInput != 0)
+        {
+            carRB.AddRelativeTorque(Vector3.up * turnInput * turnForce);
+        }
     }
 
 
@@ -160,5 +244,5 @@ public class CarPhysicsBehavior : MonoBehaviour
 
         Vector3 slideControl = transform.right * (-sliding * slideAmount);
     }
-    
+
 }
