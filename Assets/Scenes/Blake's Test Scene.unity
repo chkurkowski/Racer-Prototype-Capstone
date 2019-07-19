@@ -563,6 +563,7 @@ GameObject:
   - component: {fileID: 685411643}
   - component: {fileID: 685411642}
   - component: {fileID: 685411648}
+  - component: {fileID: 685411649}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -583,12 +584,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   downForce: 100
+  isOverheated: 0
   drivePos: {fileID: 1713012364}
   driveForce: 10000
   brakeForce: 100
   turnForce: 0.25
+  hoverPoints: []
+  groundedDrag: 3
   reverseSpeed: 0.25
   carGrip: 0.05
+  suspensionLength: 3
+  suspensionForce: 50
+  grounded: 0
+  maxSpeed: 500
   horizontalAxis: Horizontal
   verticalForwardAxis: VerticalForward
   verticalBackwardAxis: VerticalBackwards
@@ -709,6 +717,23 @@ MonoBehaviour:
   boostAxis: AButtonP1
   camera: {fileID: 1261449075}
   tempBoostVisual: {fileID: 1306737416}
+--- !u!114 &685411649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685411641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9c76f34e0f42f4a97eb6a7560e3cfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heatMaxConstant: 150
+  heatLimit: 100
+  heatCurrent: 0
+  cooldownAmount: 1
+  isOverheated: 0
 --- !u!1 &854332971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,12 +1701,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   downForce: 100
+  isOverheated: 0
   drivePos: {fileID: 854332972}
   driveForce: 10000
   brakeForce: 100
   turnForce: 0.1
+  hoverPoints: []
+  groundedDrag: 3
   reverseSpeed: -0.25
   carGrip: 0.05
+  suspensionLength: 3
+  suspensionForce: 50
+  grounded: 0
+  maxSpeed: 500
   horizontalAxis: 
   verticalForwardAxis: 
   verticalBackwardAxis: 
@@ -3178,6 +3210,7 @@ GameObject:
   - component: {fileID: 2128777603}
   - component: {fileID: 2128777602}
   - component: {fileID: 2128777608}
+  - component: {fileID: 2128777609}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -3198,12 +3231,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   downForce: 100
+  isOverheated: 0
   drivePos: {fileID: 1110092151}
   driveForce: 10000
   brakeForce: 100
   turnForce: 0.25
+  hoverPoints: []
+  groundedDrag: 3
   reverseSpeed: 0.25
   carGrip: 0.05
+  suspensionLength: 3
+  suspensionForce: 50
+  grounded: 0
+  maxSpeed: 500
   horizontalAxis: HorizontalP2
   verticalForwardAxis: VerticalForwardP2
   verticalBackwardAxis: VerticalBackwardsP2
@@ -3324,6 +3364,23 @@ MonoBehaviour:
   boostAxis: AButtonP2
   camera: {fileID: 1412821732}
   tempBoostVisual: {fileID: 2041964242}
+--- !u!114 &2128777609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128777601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9c76f34e0f42f4a97eb6a7560e3cfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heatMaxConstant: 150
+  heatLimit: 100
+  heatCurrent: 0
+  cooldownAmount: 1
+  isOverheated: 0
 --- !u!1001 &660230764733461714
 PrefabInstance:
   m_ObjectHideFlags: 0

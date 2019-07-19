@@ -91,7 +91,7 @@ public class CarPhysicsBehavior : MonoBehaviour
     private void FixedUpdate()
     {
        // driveInput = brakeInput = Input.GetAxis(verticalAxis);
-        turnInput = Input.GetAxis("Horizontal");
+        turnInput = Input.GetAxis(horizontalAxis);
 
         forwardInput = Input.GetAxis(verticalForwardAxis);
         backwardInput = Input.GetAxis(verticalBackwardAxis);
@@ -199,10 +199,10 @@ public class CarPhysicsBehavior : MonoBehaviour
             carRB.AddForceAtPosition(flatFwd * driveForce * forwardInput * Time.deltaTime, drivePos.position); //used for W and S and arrow keys
         }
 
-        if (forwardInput > deadZone)
-        {
-            carRB.AddForce(flatFwd * driveForce * forwardInput); //used for W and S and arrow keys
-        }
+        //if (forwardInput > deadZone)
+      //  {
+          //  carRB.AddForce(flatFwd * driveForce * forwardInput); //used for W and S and arrow keys
+        //}
     }
 
     //applies backward force based on inputs
