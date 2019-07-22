@@ -198,7 +198,7 @@ public class CarPhysicsBehavior : MonoBehaviour
     //applies backward force based on inputs
     public void brake()
     {
-        if (carRB.velocity.z > 0)
+        if (carRB.velocity.z > 0 && grounded)
         {
             carRB.AddForceAtPosition(flatFwd * brakeForce * brakeInput, drivePos.position);
             //carRB.AddRelativeForce(Vector3.down * brakeForce * brakeInput * Time.deltaTime);
