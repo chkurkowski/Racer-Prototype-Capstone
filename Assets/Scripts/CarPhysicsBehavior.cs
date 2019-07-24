@@ -44,6 +44,8 @@ public class CarPhysicsBehavior : MonoBehaviour
     //checks how "compressed" each point is, 0 for fully extended, 1 for fully compressed
     private float compression;
 
+    private float appliedTurnForce;
+
 
     GameObject suspensionPoint;
 
@@ -55,7 +57,6 @@ public class CarPhysicsBehavior : MonoBehaviour
 
 
     public bool grounded;
-
 
     public float maxSpeed = 500.0f;
 
@@ -85,7 +86,8 @@ public class CarPhysicsBehavior : MonoBehaviour
 
     private void FixedUpdate()
     {
-       // driveInput = brakeInput = Input.GetAxis(verticalAxis);
+        Debug.Log(driveForce);
+        // driveInput = brakeInput = Input.GetAxis(verticalAxis);
         turnInput = Input.GetAxis("Horizontal");
 
         forwardInput = Input.GetAxis(verticalForwardAxis);
@@ -97,7 +99,7 @@ public class CarPhysicsBehavior : MonoBehaviour
         brakeInput = Mathf.Clamp(brakeInput, -1, 0);
         //clamping for controller triggers, probably isn't needed.
         forwardInput = Mathf.Clamp(forwardInput, -reverseSpeed, 1);
-       // backwardInput = Mathf.Clamp(backwardInput, 0, 1);
+        // backwardInput = Mathf.Clamp(backwardInput, 0, 1);
 
         //Testing method, launches the car into the air on button press to test suspension
         if (Input.GetKeyDown(KeyCode.Space))
@@ -108,8 +110,7 @@ public class CarPhysicsBehavior : MonoBehaviour
         }
 
 
-        //Checks if the car is touching the ground at all positions
-        grounded = false;
+
 
         //Consolidated suspension system into this script. Draws a downward raycast at each point to check for collisions and applies an upward force if one is found.
         for (int i = 0; i < hoverPoints.Length; i++)
@@ -122,7 +123,7 @@ public class CarPhysicsBehavior : MonoBehaviour
             Debug.DrawRay(suspensionPoint.transform.position, -transform.up, Color.red);
 
 
-
+            //Checks if the car is touching the ground at all positions
             if (Physics.Raycast(ray, out hit, suspensionLength))
             {
                 compression = (suspensionLength - hit.distance) / suspensionLength;
@@ -131,6 +132,7 @@ public class CarPhysicsBehavior : MonoBehaviour
             else
             {
                 compression = 0;
+                grounded = false;
             }
 
             if (compression > 0)
@@ -208,13 +210,13 @@ public class CarPhysicsBehavior : MonoBehaviour
     //applies a torque to rotate the vehicle the appropriate amount
     public void turn()
     {
-
+        appliedTurnForce = turnForce * forwardInput;
         //Vector3 turnVec = ((transform.up * turnForce) * turnInput) * 800.0f;
 
         //carRB.AddTorque(turnVec);
         if (turnInput != 0)
         {
-            carRB.AddRelativeTorque(Vector3.up * turnInput * turnForce);
+            carRB.AddRelativeTorque(Vector3.up * turnInput * appliedTurnForce);
         }
     }
 
