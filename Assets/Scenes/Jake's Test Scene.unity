@@ -1310,7 +1310,7 @@ Transform:
   m_GameObject: {fileID: 404767790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 267.2922, y: -4.3, z: 994}
-  m_LocalScale: {x: 2500, y: 10, z: 2700.74}
+  m_LocalScale: {x: 3000, y: 10, z: 3000}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -3153,7 +3153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostTime: 5
-  boostAmount: 3000
+  boostAmount: 2000
   accelerationAdd: 500
   decelerationSub: 100
   boostAxis: AButtonP1
@@ -3175,7 +3175,7 @@ MonoBehaviour:
   drivePos: {fileID: 1899517716}
   driveForce: 500
   brakeForce: 100
-  turnForce: 200
+  turnForce: 300
   hoverPoints:
   - {fileID: 1673715645}
   - {fileID: 229156929}
