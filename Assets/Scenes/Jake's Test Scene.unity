@@ -2286,9 +2286,9 @@ Transform:
   m_Father: {fileID: 4013072985563821}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &963194225 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 775676765654723359, guid: 54d86e26683fd49ceb879a39ae5231ef,
+--- !u!20 &963194228 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 775676765654723357, guid: 54d86e26683fd49ceb879a39ae5231ef,
     type: 3}
   m_PrefabInstance: {fileID: 775676765769467502}
   m_PrefabAsset: {fileID: 0}
@@ -3154,10 +3154,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boostTime: 5
   boostAmount: 2000
-  accelerationAdd: 500
-  decelerationSub: 100
+  accelerationAdd: 1000
   boostAxis: AButtonP1
-  camera: {fileID: 963194225}
+  camera: {fileID: 963194228}
   tempBoostVisual: {fileID: 877543389}
 --- !u!114 &1282856049
 MonoBehaviour:
@@ -3176,6 +3175,9 @@ MonoBehaviour:
   driveForce: 500
   brakeForce: 100
   turnForce: 300
+  acceleration: 300
+  deceleration: 400
+  currentDriveForce: 0
   hoverPoints:
   - {fileID: 1673715645}
   - {fileID: 229156929}
@@ -7590,6 +7592,11 @@ PrefabInstance:
       propertyPath: objectToFollow
       value: 
       objectReference: {fileID: 1282856054}
+    - target: {fileID: 775676765654723355, guid: 54d86e26683fd49ceb879a39ae5231ef,
+        type: 3}
+      propertyPath: followSpeed
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54d86e26683fd49ceb879a39ae5231ef, type: 3}
 --- !u!23 &1519643339648636520
