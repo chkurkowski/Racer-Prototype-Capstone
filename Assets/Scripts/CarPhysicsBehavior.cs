@@ -226,7 +226,7 @@ public class CarPhysicsBehavior : MonoBehaviour
     //applies a torque to rotate the vehicle the appropriate amount
     public void turn()
     {
-        appliedTurnForce = turnForce * forwardInput;
+        appliedTurnForce = turnForce * (currentDriveForce / 300);
         //Vector3 turnVec = ((transform.up * turnForce) * turnInput) * 800.0f;
 
         //carRB.AddTorque(turnVec);
