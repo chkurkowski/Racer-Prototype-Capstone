@@ -22,6 +22,13 @@ public class CarPhysicsBehavior : MonoBehaviour
     //forces applied by each action
     public float driveForce, brakeForce, turnForce;
 
+    // Acceleration to be added when driving
+    public float acceleration;
+    public float deceleration;
+
+    // The current speed of the vehicle
+    [HideInInspector] public float currentDriveForce;
+
     float deadZone = .1f;
 
     public GameObject[] hoverPoints;
@@ -86,7 +93,7 @@ public class CarPhysicsBehavior : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(driveForce);
+        Debug.Log("Current Drive Force: " + currentDriveForce);
         // driveInput = brakeInput = Input.GetAxis(verticalAxis);
         turnInput = Input.GetAxis("Horizontal");
 
@@ -191,10 +198,19 @@ public class CarPhysicsBehavior : MonoBehaviour
         }*/
         // carRB.AddForceAtPosition(flatFwd * driveForce * driveInput * Time.deltaTime, drivePos.position); //used for W and S
 
+        currentDriveForce = Mathf.Clamp (currentDriveForce, 0f, driveForce);
+
         if (forwardInput > deadZone)
         {
-            carRB.AddForce(flatFwd * driveForce * forwardInput); //used for W and S and arrow keys
+            currentDriveForce += acceleration * Time.fixedDeltaTime;
         }
+        else
+        {
+            if (currentDriveForce > 0) {
+                 currentDriveForce -= deceleration * Time.fixedDeltaTime;
+            }
+        }
+        carRB.AddForce(flatFwd * currentDriveForce); //used for W and S and arrow keys
     }
 
     //applies backward force based on inputs
@@ -210,7 +226,7 @@ public class CarPhysicsBehavior : MonoBehaviour
     //applies a torque to rotate the vehicle the appropriate amount
     public void turn()
     {
-        appliedTurnForce = turnForce * forwardInput;
+        appliedTurnForce = turnForce * (currentDriveForce / 300);
         //Vector3 turnVec = ((transform.up * turnForce) * turnInput) * 800.0f;
 
         //carRB.AddTorque(turnVec);
