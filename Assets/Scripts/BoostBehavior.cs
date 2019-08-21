@@ -7,9 +7,11 @@ public class BoostBehavior : MonoBehaviour
     public int boostTime;
     public float boostAmount;
     public float accelerationAdd;
+    public float boostTurnForce;
     private float boostCharge;
     private float iniAccelaration;
     private float iniSpeed;
+    private float iniTurnForce;
     private bool canBoost;
     private CarPhysicsBehavior carScript;
 
@@ -30,6 +32,7 @@ public class BoostBehavior : MonoBehaviour
         carScript = GetComponent<CarPhysicsBehavior>();
         iniAccelaration = carScript.acceleration;
         iniSpeed = carScript.driveForce;
+        iniTurnForce = carScript.turnForce;
         boostCharge = iniSpeed + boostAmount;
     }
 
@@ -61,6 +64,7 @@ public class BoostBehavior : MonoBehaviour
         // Adds the vehicles accelerationa amount
         carScript.acceleration = accelerationAdd;
         carScript.driveForce = boostCharge;
+        carScript.turnForce = boostTurnForce;
 
         // Time while max boost is active
         
@@ -70,6 +74,7 @@ public class BoostBehavior : MonoBehaviour
         // Subtracts the vehicles accelerationa amount
         carScript.acceleration = iniAccelaration;
         carScript.driveForce = iniSpeed;
+        carScript.turnForce = iniTurnForce;
 
         canBoost = true;
     }
