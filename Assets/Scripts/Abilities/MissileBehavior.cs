@@ -5,7 +5,9 @@ using UnityEngine;
 public class MissileBehavior : MonoBehaviour
 {
     private Rigidbody rigidBody;
-    public float missileSpeed;
+    public float missileSpeed = 400f;
+    public GameObject explosionPrefab;
+    public float fuseTime = 5f;
     private GameObject immunePlayer;
     // Start is called before the first frame update
 
@@ -13,12 +15,12 @@ public class MissileBehavior : MonoBehaviour
     {
         rigidBody = gameObject.GetComponent<Rigidbody>();
         rigidBody.velocity = new Vector3(0, 0, missileSpeed);
-
     }
 
-    public void IgniteMissile()
+    public void ExplodeMissile()
     {
-       
+        Instantiate(explosionPrefab, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 
     public void SetImmunePlayer(GameObject newPlayer)
@@ -30,14 +32,10 @@ public class MissileBehavior : MonoBehaviour
     {
         if(collision.gameObject != immunePlayer)
         {
-            Explode();
+            ExplodeMissile();
         }
     }
 
-    private void Explode()
-    {
-        Debug.Log("Boom!");
-        Destroy(gameObject);
-    }
+
 
 }

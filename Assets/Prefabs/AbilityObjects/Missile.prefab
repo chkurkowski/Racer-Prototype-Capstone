@@ -47,7 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b30783f7e2a25d544a62aa353ebb48c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missileSpeed: 200
+  missileSpeed: 400
+  explosionPrefab: {fileID: 0}
+  fuseTime: 5
 --- !u!33 &7655482786058017385
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -73,7 +75,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

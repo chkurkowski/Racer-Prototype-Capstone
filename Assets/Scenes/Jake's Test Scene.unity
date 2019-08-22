@@ -458,8 +458,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e65ed85871ca24abe929471cc55986b6, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   frontDriverW: {fileID: 1167522248}
   frontPassengerW: {fileID: 1267889680}
   rearDriverW: {fileID: 148437876}
@@ -3181,8 +3181,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0269cee522501470f9ef8fbf20c954a8, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   boostTime: 5
   boostAmount: 2000
   accelerationAdd: 1000
@@ -3199,8 +3199,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0420b097e0f6a1d4b8f5d3582bb526de, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   downForce: 200
   drivePos: {fileID: 1899517716}
   driveForce: 500
@@ -3323,6 +3323,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1282856055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282856047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b1a336ec7304b4cbf6801f0ad3d870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityRecharge: 5
+  abilityObject: {fileID: 3082248129000263785, guid: 7a0b92a15c61c2944a0cb86f5f6bdfe3,
+    type: 3}
+  missileSpawnLocation: {fileID: 85761050}
+  pickupObject: {fileID: 0}
+  abilityAxis: FireP1
+  pickupAxis: 
 --- !u!1 &1310004823
 GameObject:
   m_ObjectHideFlags: 0
@@ -8822,7 +8841,7 @@ Transform:
   m_LocalScale: {x: 20, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1720669310
 GameObject:
@@ -10391,8 +10410,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90a490cac2a204e01a93560565673b00, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   throttleWheels:
   - {fileID: 1977516333149940}
   - {fileID: 1311625605318930}
@@ -12600,7 +12619,7 @@ PrefabInstance:
     - target: {fileID: 775676765654723355, guid: 54d86e26683fd49ceb879a39ae5231ef,
         type: 3}
       propertyPath: objectToFollow
-      value:
+      value: 
       objectReference: {fileID: 1282856054}
     - target: {fileID: 775676765654723355, guid: 54d86e26683fd49ceb879a39ae5231ef,
         type: 3}
