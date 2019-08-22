@@ -86,7 +86,7 @@ public class CarPhysicsBehavior : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(driveForce);
+        //Debug.Log(driveForce);
         // driveInput = brakeInput = Input.GetAxis(verticalAxis);
         turnInput = Input.GetAxis("Horizontal");
 
