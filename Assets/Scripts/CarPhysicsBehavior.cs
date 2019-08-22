@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CarPhysicsBehavior : MonoBehaviour
 {
-    //list of suspension points and driving points, not currently used, but could be useful for checking if the car is making a jump 
+    //list of suspension points and driving points, not currently used, but could be useful for checking if the car is making a jump
     //or for making frontwheel vs rearwheel drive vehicles later
     //public List<SuspensionPoint> suspension;
     //public List<SuspensionPoint> drivingPoints;
@@ -82,7 +82,7 @@ public class CarPhysicsBehavior : MonoBehaviour
     {
         //stores the rigidbody value of the car
         carRB = GetComponent<Rigidbody>();
-       
+
     }
 
     private void Start()
@@ -111,7 +111,7 @@ public class CarPhysicsBehavior : MonoBehaviour
         //Testing method, launches the car into the air on button press to test suspension
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            carRB.AddForceAtPosition(Vector3.up * 15, 
+            carRB.AddForceAtPosition(Vector3.up * 15,
                 new Vector3(transform.position.x + (Random.value * 5), transform.position.y + (Random.value * 5), transform.position.z + (Random.value * 5)),
                 ForceMode.Impulse);
         }
@@ -252,5 +252,5 @@ public class CarPhysicsBehavior : MonoBehaviour
 
         Vector3 slideControl = transform.right * (-sliding * slideAmount);
     }
-    
+
 }
