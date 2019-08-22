@@ -7,18 +7,17 @@ public class BoostBehavior : MonoBehaviour
     public int boostTime;
     public float boostAmount;
     public float accelerationAdd;
-    public float decelerationSub;
     private float boostCharge;
+    private float iniAccelaration;
     private float iniSpeed;
     private bool canBoost;
     private CarPhysicsBehavior carScript;
-    private SimpleCameraFollow mainCamera;
 
     //string for controller support
     public string boostAxis;
 
     //gameObject to access specific camera for each player
-    public GameObject camera;
+    public Camera camera;
 
     //temporary object enabled/disabled based on boost state
     public GameObject tempBoostVisual;
@@ -29,7 +28,7 @@ public class BoostBehavior : MonoBehaviour
         // Sets variables for gameplay
         canBoost = true;
         carScript = GetComponent<CarPhysicsBehavior>();
-        mainCamera = camera.GetComponent<SimpleCameraFollow>();
+        iniAccelaration = carScript.acceleration;
         iniSpeed = carScript.driveForce;
         boostCharge = iniSpeed + boostAmount;
     }
@@ -43,38 +42,35 @@ public class BoostBehavior : MonoBehaviour
             canBoost = false;
             StartCoroutine(Boost());
         }
+        if (canBoost == false)
+        {
+            // Lerps the camera follow speed to be slower
+            camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, 90, 0.1f);
+        }
+        if (canBoost == true)
+        {
+            // Lerps the camera follow speed to be faster
+            camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, 60, 0.1f);
+        }
     }
     
     private IEnumerator Boost()
     {
         tempBoostVisual.SetActive(true);
-        
-        while (carScript.driveForce < boostCharge)
-        {
-            // Lerps the camera follow speed to be slower
-            mainCamera.GetComponent<SimpleCameraFollow>().followSpeed =
-            Mathf.Lerp(10, mainCamera.followSpeed, Time.deltaTime);
 
-            // Adds speed to vehicles drive force over time
-            carScript.driveForce += accelerationAdd;
-            yield return new WaitForSeconds(0.05f);
-        }
+        // Adds the vehicles accelerationa amount
+        carScript.acceleration = accelerationAdd;
+        carScript.driveForce = boostCharge;
 
         // Time while max boost is active
         
         yield return new WaitForSeconds(boostTime);
         tempBoostVisual.SetActive(false);
 
-        while (carScript.driveForce > iniSpeed)
-        {
-            // Lerps the camera follow speed to be faster
-            mainCamera.GetComponent<SimpleCameraFollow>().followSpeed =
-            Mathf.Lerp(mainCamera.followSpeed, 34, 6f * Time.deltaTime);
+        // Subtracts the vehicles accelerationa amount
+        carScript.acceleration = iniAccelaration;
+        carScript.driveForce = iniSpeed;
 
-            // Subtracts the vehicles drive force over time
-            carScript.driveForce -= decelerationSub;
-            yield return new WaitForSeconds(0.05f);
-        }
         canBoost = true;
     }
 }

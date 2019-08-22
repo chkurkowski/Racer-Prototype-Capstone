@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CarPhysicsBehavior : MonoBehaviour
 {
-    //list of suspension points and driving points, not currently used, but could be useful for checking if the car is making a jump 
+    //list of suspension points and driving points, not currently used, but could be useful for checking if the car is making a jump
     //or for making frontwheel vs rearwheel drive vehicles later
     //public List<SuspensionPoint> suspension;
     //public List<SuspensionPoint> drivingPoints;
@@ -21,6 +21,13 @@ public class CarPhysicsBehavior : MonoBehaviour
 
     //forces applied by each action
     public float driveForce, brakeForce, turnForce;
+
+    // Acceleration to be added when driving
+    public float acceleration;
+    public float deceleration;
+
+    // The current speed of the vehicle
+    [HideInInspector] public float currentDriveForce;
 
     float deadZone = .1f;
 
@@ -75,7 +82,7 @@ public class CarPhysicsBehavior : MonoBehaviour
     {
         //stores the rigidbody value of the car
         carRB = GetComponent<Rigidbody>();
-       
+
     }
 
     private void Start()
@@ -86,7 +93,7 @@ public class CarPhysicsBehavior : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Debug.Log(driveForce);
+        Debug.Log("Current Drive Force: " + currentDriveForce);
         // driveInput = brakeInput = Input.GetAxis(verticalAxis);
         turnInput = Input.GetAxis("Horizontal");
 
@@ -104,7 +111,7 @@ public class CarPhysicsBehavior : MonoBehaviour
         //Testing method, launches the car into the air on button press to test suspension
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            carRB.AddForceAtPosition(Vector3.up * 15, 
+            carRB.AddForceAtPosition(Vector3.up * 15,
                 new Vector3(transform.position.x + (Random.value * 5), transform.position.y + (Random.value * 5), transform.position.z + (Random.value * 5)),
                 ForceMode.Impulse);
         }
@@ -191,10 +198,19 @@ public class CarPhysicsBehavior : MonoBehaviour
         }*/
         // carRB.AddForceAtPosition(flatFwd * driveForce * driveInput * Time.deltaTime, drivePos.position); //used for W and S
 
+        currentDriveForce = Mathf.Clamp (currentDriveForce, 0f, driveForce);
+
         if (forwardInput > deadZone)
         {
-            carRB.AddForce(flatFwd * driveForce * forwardInput); //used for W and S and arrow keys
+            currentDriveForce += acceleration * Time.fixedDeltaTime;
         }
+        else
+        {
+            if (currentDriveForce > 0) {
+                 currentDriveForce -= deceleration * Time.fixedDeltaTime;
+            }
+        }
+        carRB.AddForce(flatFwd * currentDriveForce); //used for W and S and arrow keys
     }
 
     //applies backward force based on inputs
@@ -210,7 +226,7 @@ public class CarPhysicsBehavior : MonoBehaviour
     //applies a torque to rotate the vehicle the appropriate amount
     public void turn()
     {
-        appliedTurnForce = turnForce * forwardInput;
+        appliedTurnForce = turnForce * (currentDriveForce / 300);
         //Vector3 turnVec = ((transform.up * turnForce) * turnInput) * 800.0f;
 
         //carRB.AddTorque(turnVec);
@@ -236,5 +252,5 @@ public class CarPhysicsBehavior : MonoBehaviour
 
         Vector3 slideControl = transform.right * (-sliding * slideAmount);
     }
-    
+
 }
