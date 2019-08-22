@@ -22,7 +22,7 @@ public class BoostBehavior : MonoBehaviour
     public Camera camera;
 
     //temporary object enabled/disabled based on boost state
-    public GameObject tempBoostVisual;
+    public GameObject boostParticleEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +34,7 @@ public class BoostBehavior : MonoBehaviour
         iniSpeed = carScript.driveForce;
         iniTurnForce = carScript.turnForce;
         boostCharge = iniSpeed + boostAmount;
+        boostParticleEffect.SetActive(false);
     }
 
     // Update is called once per frame
@@ -59,7 +60,7 @@ public class BoostBehavior : MonoBehaviour
     
     private IEnumerator Boost()
     {
-        tempBoostVisual.SetActive(true);
+        boostParticleEffect.SetActive(true);
 
         // Adds the vehicles accelerationa amount
         carScript.acceleration = accelerationAdd;
@@ -69,7 +70,7 @@ public class BoostBehavior : MonoBehaviour
         // Time while max boost is active
         
         yield return new WaitForSeconds(boostTime);
-        tempBoostVisual.SetActive(false);
+        boostParticleEffect.SetActive(false);
 
         // Subtracts the vehicles accelerationa amount
         carScript.acceleration = iniAccelaration;
