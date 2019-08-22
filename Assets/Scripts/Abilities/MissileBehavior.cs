@@ -6,6 +6,7 @@ public class MissileBehavior : MonoBehaviour
 {
     private Rigidbody rigidBody;
     public float missileSpeed = 400f;
+    public float missileDamage = 20f;
     public GameObject explosionPrefab;
     public float fuseTime = 5f;
     private GameObject immunePlayer;
@@ -14,12 +15,15 @@ public class MissileBehavior : MonoBehaviour
     private void Start()
     {
         rigidBody = gameObject.GetComponent<Rigidbody>();
-        rigidBody.velocity = new Vector3(0, 0, missileSpeed);
+        rigidBody.velocity = transform.TransformDirection(Vector3.up * missileSpeed);
     }
 
     public void ExplodeMissile()
     {
-        Instantiate(explosionPrefab, transform.position, transform.rotation);
+      GameObject spawnedExplosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
+        spawnedExplosion.GetComponent<MissileExplosionBehavior>().SetImmunePlayer(immunePlayer);
+        spawnedExplosion.GetComponent<MissileExplosionBehavior>().SetExplosionDamage(missileDamage);
+
         Destroy(gameObject);
     }
 
