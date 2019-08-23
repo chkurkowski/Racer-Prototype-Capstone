@@ -19,8 +19,13 @@ public class TrackManager : MonoBehaviour
         
     }
 
-    public bool checkIncrimate()
+    public bool CheckIncrimate()
     {
         return canIncrimate;
+    }
+
+    public void AssignIncrimate(bool IncrimateValue)
+    {
+        canIncrimate = IncrimateValue;
     }
 }

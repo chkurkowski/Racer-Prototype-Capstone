@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FinishLine : MonoBehaviour
+public class EventCheck : MonoBehaviour
 {
     private TrackManager trackManager;
+    public GameObject theEvent;
+    public int lapToHappen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,17 +17,17 @@ public class FinishLine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Vehicle"))
         {
-            if (trackManager.CheckIncrimate() == true)
+            if (trackManager.lap == lapToHappen && trackManager.CheckIncrimate() == false)
             {
-                trackManager.AssignIncrimate(false);
-                trackManager.lap++;
+                trackManager.AssignIncrimate(true);
+                theEvent.GetComponent<BarrierEvent>().BarrierEventActiavtion();
             }
         }
     }
