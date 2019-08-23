@@ -11,12 +11,6 @@ public class FinishLine : MonoBehaviour
         trackManager = GameObject.Find("Manager").GetComponent<TrackManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Vehicle"))
@@ -24,7 +18,14 @@ public class FinishLine : MonoBehaviour
             if (trackManager.CheckIncrimate() == true)
             {
                 trackManager.AssignIncrimate(false);
-                trackManager.lap++;
+                if(trackManager.lap < 3)
+                {
+                   trackManager.lap++; 
+                }
+                else if (trackManager.lap >= 3)
+                {
+                    Debug.Log("Race Done");
+                }
             }
         }
     }

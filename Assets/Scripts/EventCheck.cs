@@ -14,12 +14,6 @@ public class EventCheck : MonoBehaviour
         trackManager = GameObject.Find("Manager").GetComponent<TrackManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Vehicle"))
