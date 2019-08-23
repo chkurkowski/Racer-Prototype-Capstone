@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Boost
   - Vehicle
+  - Ground
   layers:
   - Default
   - TransparentFX
