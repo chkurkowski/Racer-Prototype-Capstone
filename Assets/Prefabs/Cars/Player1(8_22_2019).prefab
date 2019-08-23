@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vehicleScript: {fileID: 8829525317950555297}
   audioSource: {fileID: 1237122792}
-  speedDivide: 220
+  speedDivide: 280
   minPitch: 0.7
   maxPitch: 3
 --- !u!1 &1310004823
