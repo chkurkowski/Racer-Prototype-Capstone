@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Boost
+  - Vehicle
+  - Ground
   layers:
   - Default
   - TransparentFX
