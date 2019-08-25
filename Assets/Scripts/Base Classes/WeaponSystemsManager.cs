@@ -9,12 +9,20 @@ public class WeaponSystemsManager : MonoBehaviour
     [Tooltip("Ability Prefab Slot")] public GameObject abilityObject;
     [Tooltip("Missle Spawn Location")] public Transform missileSpawnLocation;
 
-    private bool canUseAbility = true;
+    public bool canUseAbility = true;
+    
 
     [Tooltip("The pickup slot.")] public GameObject pickupObject;
     [Tooltip("The Axis for using Abilities")] public string abilityAxis;
     [Tooltip("The Axis for using Pickups")] public string pickupAxis;
 
+    [Header("Sludge Stuff")]
+    public GameObject sludgeDropObject;
+    public float sludgeDropRate = .5f;
+    public float sludgeDropDuration = 3f;
+    private float sludgeCurrentDuration = 0;
+    public bool hasSludgePickup = false;
+    public bool isUsingPickup = false;
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -27,12 +35,33 @@ public class WeaponSystemsManager : MonoBehaviour
             canUseAbility = false;
             StartCoroutine(AbilityCooldown());
         }
-       // if (Input.GetButtonDown(pickupAxis))
-       // {
-         //   pickupObject.SendMessage("UsePickup");
-      //  }
+
+        if(Input.GetButtonDown(pickupAxis) && hasSludgePickup)
+        {
+            isUsingPickup = true;
+            hasSludgePickup = false;
+            InvokeRepeating("DropSludge", 0, sludgeDropRate);
+
+        }
+
+        if(isUsingPickup)
+        {
+            sludgeCurrentDuration += Time.deltaTime;
+            if(sludgeCurrentDuration >= sludgeDropDuration)
+            {
+                CancelInvoke("DropSludge");
+                isUsingPickup = false;
+                sludgeCurrentDuration = 0f;
+
+            }
+        }
+      
     }
 
+    public void DropSludge()
+    {
+        Instantiate(sludgeDropObject, transform.position, sludgeDropObject.transform.rotation);
+    }
 
     private IEnumerator AbilityCooldown()
     {
