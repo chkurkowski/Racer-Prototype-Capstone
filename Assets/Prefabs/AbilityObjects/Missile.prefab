@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missileSpeed: 400
-  missileDamage: 20
+  missileDamage: 75
   explosionPrefab: {fileID: 5672782229648065796, guid: 2092b8a974fc2384bb786f43e8e53109,
     type: 3}
   fuseTime: 5

@@ -38532,6 +38532,7 @@ GameObject:
   - component: {fileID: 8829525317950555298}
   - component: {fileID: 8829525317950555299}
   - component: {fileID: 8829525317950555296}
+  - component: {fileID: 8139073901085731}
   - component: {fileID: 8829525317950555297}
   - component: {fileID: 8829525317950555326}
   - component: {fileID: 8829525317950555327}
@@ -38644,6 +38645,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8139073901085731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829525317950555324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8d037ec5c1e0a4593acd6e589a3ad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugHeatText: {fileID: 0}
+  heatCurrent: 100
+  heatStallLimit: 100
+  heatExplodeLimit: 120
+  cooldownRate: 1
 --- !u!114 &8829525317950555297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38716,9 +38734,15 @@ MonoBehaviour:
   abilityObject: {fileID: 3082248129000263785, guid: 7a0b92a15c61c2944a0cb86f5f6bdfe3,
     type: 3}
   missileSpawnLocation: {fileID: 8829525318109776803}
+  canUseAbility: 1
   pickupObject: {fileID: 0}
   abilityAxis: FireP1
-  pickupAxis: 
+  pickupAxis: FireP2
+  sludgeDropObject: {fileID: 0}
+  sludgeDropRate: 0.5
+  sludgeDropDuration: 3
+  hasSludgePickup: 0
+  isUsingPickup: 0
 --- !u!1 &8829525318028668421
 GameObject:
   m_ObjectHideFlags: 0

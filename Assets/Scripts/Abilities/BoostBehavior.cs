@@ -14,6 +14,7 @@ public class BoostBehavior : MonoBehaviour
     private float iniTurnForce;
     private bool canBoost;
     private CarPhysicsBehavior carScript;
+    private CarHeatManager carHeatInfo;
 
     //string for controller support
     public string boostAxis;
@@ -29,6 +30,7 @@ public class BoostBehavior : MonoBehaviour
     {
         // Sets variables for gameplay
         canBoost = true;
+        carHeatInfo = GetComponent<CarHeatManager>();
         carScript = GetComponent<CarPhysicsBehavior>();
         iniAccelaration = carScript.acceleration;
         iniSpeed = carScript.driveForce;
@@ -41,7 +43,7 @@ public class BoostBehavior : MonoBehaviour
     void Update()
     {
         // Checks for Boost Input and calls corutine if possible
-        if (Input.GetButtonDown(boostAxis) && canBoost)
+        if (Input.GetButtonDown(boostAxis) && canBoost && (carHeatInfo.heatCurrent < carHeatInfo.heatStallLimit))
         {
             canBoost = false;
             StartCoroutine(Boost());
