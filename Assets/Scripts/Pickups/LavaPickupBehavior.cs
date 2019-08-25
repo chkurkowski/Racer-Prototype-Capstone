@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SludgePickupBehavior : MonoBehaviour
+public class LavaPickupBehavior : MonoBehaviour
 {
     private MeshRenderer gameObjectMesh;
     private Collider gameObjectCollider;
@@ -66,7 +66,7 @@ public class SludgePickupBehavior : MonoBehaviour
     {
         if (other.gameObject.GetComponent<WeaponSystemsManager>() != null)
         {
-            other.gameObject.GetComponent<WeaponSystemsManager>().hasSludgePickup = true;
+            other.gameObject.GetComponent<WeaponSystemsManager>().lavaSludgePickup = true;
             gameObjectCollider.enabled = false;
             gameObjectMesh.enabled = false;
             Invoke("ResetPickup", pickupRecharge);

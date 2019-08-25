@@ -10,12 +10,14 @@ public class MissileBehavior : MonoBehaviour
     public GameObject explosionPrefab;
     public float fuseTime = 5f;
     private GameObject immunePlayer;
+    public float missileLifeTime = 3f;
     // Start is called before the first frame update
 
     private void Start()
     {
         rigidBody = gameObject.GetComponent<Rigidbody>();
         rigidBody.velocity = transform.TransformDirection(Vector3.up * missileSpeed);
+        Invoke("ExplodeMissile", missileLifeTime);
     }
 
     public void ExplodeMissile()
@@ -37,6 +39,7 @@ public class MissileBehavior : MonoBehaviour
         if(collision.gameObject != immunePlayer)
         {
             ExplodeMissile();
+            
         }
     }
 

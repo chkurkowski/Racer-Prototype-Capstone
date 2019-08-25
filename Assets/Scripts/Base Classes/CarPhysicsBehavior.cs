@@ -8,7 +8,7 @@ public class CarPhysicsBehavior : MonoBehaviour
     //or for making frontwheel vs rearwheel drive vehicles later
     //public List<SuspensionPoint> suspension;
     //public List<SuspensionPoint> drivingPoints;
-
+    private CarHeatManager carHeatInfo;
     //Downward force applied to vehicle to keep it on the ground
     public float downForce = 100;
 
@@ -89,6 +89,7 @@ public class CarPhysicsBehavior : MonoBehaviour
     {
         //lowers the center of mass of the vehicle to limit flipping
         carRB.centerOfMass = new Vector3(0, -1, 0);
+        carHeatInfo = gameObject.GetComponent<CarHeatManager>();
     }
 
     private void FixedUpdate()
@@ -109,12 +110,12 @@ public class CarPhysicsBehavior : MonoBehaviour
         // backwardInput = Mathf.Clamp(backwardInput, 0, 1);
 
         //Testing method, launches the car into the air on button press to test suspension
-        if (Input.GetKeyDown(KeyCode.Space))
+      /*  if (Input.GetKeyDown(KeyCode.Space))
         {
             carRB.AddForceAtPosition(Vector3.up * 15,
                 new Vector3(transform.position.x + (Random.value * 5), transform.position.y + (Random.value * 5), transform.position.z + (Random.value * 5)),
                 ForceMode.Impulse);
-        }
+        } */ 
 
 
 
@@ -200,7 +201,7 @@ public class CarPhysicsBehavior : MonoBehaviour
 
         currentDriveForce = Mathf.Clamp (currentDriveForce, 0f, driveForce);
 
-        if (forwardInput > deadZone)
+        if (forwardInput > deadZone && (carHeatInfo.heatCurrent < carHeatInfo.heatStallLimit))
         {
             currentDriveForce += acceleration * Time.fixedDeltaTime;
         }
