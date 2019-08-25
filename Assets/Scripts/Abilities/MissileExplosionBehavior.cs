@@ -9,6 +9,7 @@ public class MissileExplosionBehavior : MonoBehaviour
     public float explosionLifeLength = 0.5f;
     private float explosionDamage;
     private GameObject immunePlayer;
+   
 
     void Start()
     {
@@ -35,13 +36,19 @@ public class MissileExplosionBehavior : MonoBehaviour
     {
         if (collision.gameObject != immunePlayer)
         {
-            //place check to see if the "other" gameobject has a heat/health code
-            Debug.Log(explosionDamage + " damage was dealt to: " + collision.gameObject.name + "!");
+          //  Debug.Log(explosionDamage + " damage was dealt to: " + collision.gameObject.name + "!");
+            if(collision.GetComponent<CarHeatManager>() != null )
+            {
+                collision.GetComponent<CarHeatManager>().heatCurrent += explosionDamage;
+            }
         }
         else if(collision.gameObject == immunePlayer)
         {
-            Debug.Log("Player Detected by explosion!");
-
+           //Debug.Log("Player Detected by explosion!");
+          ///  if (collision.GetComponent<CarHeatManager>() != null)
+          //  {
+           //     collision.GetComponent<CarHeatManager>().heatCurrent += explosionDamage;
+          //  }
         }
     }
 }
