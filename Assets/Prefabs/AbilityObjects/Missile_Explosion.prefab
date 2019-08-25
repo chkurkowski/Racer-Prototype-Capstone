@@ -110,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growthRate: 0.001
   growthAmount: 0.5
-  explosionLifeLength: 0.5
+  explosionLifeLength: 1
 --- !u!54 &-7771447071239244560
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -137,7 +137,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fd136a9291bacef47a457e93de2a6b90, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f17673fddbd2e814cb6b449654c5f749, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -146,9 +146,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
-  MaxDistance: 300
+  MaxDistance: 600
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -183,7 +183,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.4
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
