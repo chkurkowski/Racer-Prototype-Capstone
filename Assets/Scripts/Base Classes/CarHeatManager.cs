@@ -38,6 +38,6 @@ public class CarHeatManager : MonoBehaviour
             heatCurrent = 0;
         }
        
-        //debugHeatText.text = "Current Heat: " + heatCurrent;
+        debugHeatText.text = "Heat: " + (int)heatCurrent;
     }
 }

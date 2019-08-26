@@ -38735,13 +38735,12 @@ MonoBehaviour:
     type: 3}
   missileSpawnLocation: {fileID: 8829525318109776803}
   canUseAbility: 1
-  pickupObject: {fileID: 0}
   abilityAxis: FireP1
   pickupAxis: FireP2
-  sludgeDropObject: {fileID: 0}
-  sludgeDropRate: 0.5
-  sludgeDropDuration: 3
-  hasSludgePickup: 0
+  lavaDropObject: {fileID: 0}
+  lavaDropRate: 0.5
+  lavaDropDuration: 3
+  lavaSludgePickup: 0
   isUsingPickup: 0
 --- !u!1 &8829525318028668421
 GameObject:
