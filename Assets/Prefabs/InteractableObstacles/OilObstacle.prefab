@@ -6984,6 +6984,7 @@ GameObject:
   - component: {fileID: 6203112101936505388}
   - component: {fileID: 6226353017137794442}
   - component: {fileID: 6100411431779094881}
+  - component: {fileID: 20659524}
   m_Layer: 0
   m_Name: OilExplosion
   m_TagString: Untagged
@@ -11742,6 +11743,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.8
   m_Center: {x: 2.54, y: 0.56, z: 0.26}
+--- !u!114 &20659524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6100411431779094894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e051eab604d7d4a9c166a07fa790de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
 --- !u!1 &6100411431802209838
 GameObject:
   m_ObjectHideFlags: 0
@@ -16287,7 +16301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6100411431921015918}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.61, y: 0.8999996, z: 0.22}
+  m_LocalPosition: {x: 2.61, y: 0.059, z: 0.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6099206077893978376}
@@ -39142,10 +39156,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlamesParticleEffect
       objectReference: {fileID: 0}
-    - target: {fileID: 1000010823978654, guid: 3228a22491941734bb83ad691d17fcb9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010409153280, guid: 3228a22491941734bb83ad691d17fcb9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.09
@@ -39190,32 +39200,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4000010409153280, guid: 3228a22491941734bb83ad691d17fcb9, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010409153280, guid: 3228a22491941734bb83ad691d17fcb9, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010409153280, guid: 3228a22491941734bb83ad691d17fcb9, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 198000013227194214, guid: 3228a22491941734bb83ad691d17fcb9,
         type: 3}
-      propertyPath: InitialModule.startSize.minScalar
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000013227194214, guid: 3228a22491941734bb83ad691d17fcb9,
-        type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000013227194214, guid: 3228a22491941734bb83ad691d17fcb9,
-        type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 2
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 198000013227194214, guid: 3228a22491941734bb83ad691d17fcb9,
         type: 3}
@@ -39224,12 +39212,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198000013227194214, guid: 3228a22491941734bb83ad691d17fcb9,
         type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 5
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 198000013227194214, guid: 3228a22491941734bb83ad691d17fcb9,
         type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
+      propertyPath: InitialModule.startSize.scalar
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000013227194214, guid: 3228a22491941734bb83ad691d17fcb9,
+        type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000013227194214, guid: 3228a22491941734bb83ad691d17fcb9,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
