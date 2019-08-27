@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CarHeatManager : MonoBehaviour
 {
-    public Text debugHeatText;
+    public Image heatImage;
     public float heatCurrent = 0f;
     public float heatStallLimit = 100f;
     public float heatExplodeLimit = 120f;
@@ -26,7 +26,7 @@ public class CarHeatManager : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.E))
         {
-            heatCurrent = 130f;
+            heatCurrent = 120f;
         }
 
         if(heatCurrent > 0)
@@ -37,7 +37,13 @@ public class CarHeatManager : MonoBehaviour
         {
             heatCurrent = 0;
         }
+
+        if (heatCurrent > heatExplodeLimit)
+        {
+            heatCurrent = heatExplodeLimit;
+        }
        
-        debugHeatText.text = "Heat: " + (int)heatCurrent;
+        heatImage.fillAmount = ((heatCurrent * 100) / 120) /100;
+        Debug.Log("Fillamount: " + heatImage.fillAmount);
     }
 }
