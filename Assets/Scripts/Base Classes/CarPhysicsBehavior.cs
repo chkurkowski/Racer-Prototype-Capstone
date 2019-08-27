@@ -92,6 +92,7 @@ public class CarPhysicsBehavior : MonoBehaviour
 
     private void FixedUpdate()
     {
+
        // Debug.Log("Current Drive Force: " + currentDriveForce);
         // driveInput = brakeInput = Input.GetAxis(verticalAxis);
         turnInput = Input.GetAxis("Horizontal");
@@ -197,17 +198,23 @@ public class CarPhysicsBehavior : MonoBehaviour
         }*/
         // carRB.AddForceAtPosition(flatFwd * driveForce * driveInput * Time.deltaTime, drivePos.position); //used for W and S
 
-        currentDriveForce = Mathf.Clamp (currentDriveForce, 0f, driveForce);
 
         if (forwardInput > deadZone && (carHeatInfo.heatCurrent < carHeatInfo.heatStallLimit))
         {
             currentDriveForce += acceleration * Time.fixedDeltaTime;
+            currentDriveForce = Mathf.Clamp (currentDriveForce, 0, driveForce);
         }
-        else
+        else if (forwardInput < 0)
+        {
+            currentDriveForce -= (deceleration + 100) * Time.fixedDeltaTime;
+            currentDriveForce = Mathf.Clamp (currentDriveForce, -200f, driveForce);
+        }
+        else if (forwardInput <= deadZone && forwardInput >= 0)
         {
             if (currentDriveForce > 0) {
-                 currentDriveForce -= deceleration * Time.fixedDeltaTime;
+                currentDriveForce -= deceleration * Time.fixedDeltaTime;
             }
+            currentDriveForce = Mathf.Clamp (currentDriveForce, 0, driveForce);
         }
         carRB.AddForce(flatFwd * currentDriveForce); //used for W and S and arrow keys
     }
