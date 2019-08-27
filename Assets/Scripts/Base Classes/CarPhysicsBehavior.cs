@@ -206,7 +206,7 @@ public class CarPhysicsBehavior : MonoBehaviour
         }
         else if (forwardInput < 0)
         {
-            currentDriveForce -= deceleration * Time.fixedDeltaTime;
+            currentDriveForce -= (deceleration + 100) * Time.fixedDeltaTime;
             currentDriveForce = Mathf.Clamp (currentDriveForce, -200f, driveForce);
         }
         else if (forwardInput <= deadZone && forwardInput >= 0)
