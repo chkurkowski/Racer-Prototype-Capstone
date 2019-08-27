@@ -51,8 +51,6 @@ public class CarPhysicsBehavior : MonoBehaviour
     //checks how "compressed" each point is, 0 for fully extended, 1 for fully compressed
     private float compression;
 
-    private float appliedTurnForce;
-
 
     GameObject suspensionPoint;
 
@@ -94,6 +92,7 @@ public class CarPhysicsBehavior : MonoBehaviour
 
     private void FixedUpdate()
     {
+
        // Debug.Log("Current Drive Force: " + currentDriveForce);
         // driveInput = brakeInput = Input.GetAxis(verticalAxis);
         turnInput = Input.GetAxis("Horizontal");
@@ -199,17 +198,23 @@ public class CarPhysicsBehavior : MonoBehaviour
         }*/
         // carRB.AddForceAtPosition(flatFwd * driveForce * driveInput * Time.deltaTime, drivePos.position); //used for W and S
 
-        currentDriveForce = Mathf.Clamp (currentDriveForce, 0f, driveForce);
 
         if (forwardInput > deadZone && (carHeatInfo.heatCurrent < carHeatInfo.heatStallLimit))
         {
             currentDriveForce += acceleration * Time.fixedDeltaTime;
+            currentDriveForce = Mathf.Clamp (currentDriveForce, 0, driveForce);
         }
-        else
+        else if (forwardInput < 0)
+        {
+            currentDriveForce -= deceleration * Time.fixedDeltaTime;
+            currentDriveForce = Mathf.Clamp (currentDriveForce, -200f, driveForce);
+        }
+        else if (forwardInput <= deadZone && forwardInput >= 0)
         {
             if (currentDriveForce > 0) {
-                 currentDriveForce -= deceleration * Time.fixedDeltaTime;
+                currentDriveForce -= deceleration * Time.fixedDeltaTime;
             }
+            currentDriveForce = Mathf.Clamp (currentDriveForce, 0, driveForce);
         }
         carRB.AddForce(flatFwd * currentDriveForce); //used for W and S and arrow keys
     }
@@ -227,13 +232,13 @@ public class CarPhysicsBehavior : MonoBehaviour
     //applies a torque to rotate the vehicle the appropriate amount
     public void turn()
     {
-        appliedTurnForce = turnForce * (currentDriveForce / 300);
+        //appliedTurnForce = turnForce * (currentDriveForce / 300);
         //Vector3 turnVec = ((transform.up * turnForce) * turnInput) * 800.0f;
 
         //carRB.AddTorque(turnVec);
         if (turnInput != 0)
         {
-            carRB.AddRelativeTorque(Vector3.up * turnInput * appliedTurnForce);
+            carRB.AddRelativeTorque(Vector3.up * turnInput * turnForce);
         }
     }
 
