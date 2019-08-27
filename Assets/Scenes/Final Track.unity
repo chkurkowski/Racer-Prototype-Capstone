@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.49641287, b: 0.5748173, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657892, g: 0.4964127, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -571,7 +571,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000030517578}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -297.6, y: -167.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &98389730
@@ -33276,26 +33276,6 @@ PrefabInstance:
       propertyPath: debugHeatText
       value: 
       objectReference: {fileID: 397735262}
-    - target: {fileID: 8830235056779637477, guid: 94b20b19c7095ea4dab2f55de8f7d12b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8662578810023141285, guid: 94b20b19c7095ea4dab2f55de8f7d12b,
-        type: 3}
-      propertyPath: moveWithTransform
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8829525317288315685, guid: 94b20b19c7095ea4dab2f55de8f7d12b,
-        type: 3}
-      propertyPath: moveWithTransform
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8829525318028668422, guid: 94b20b19c7095ea4dab2f55de8f7d12b,
-        type: 3}
-      propertyPath: moveWithTransform
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94b20b19c7095ea4dab2f55de8f7d12b, type: 3}
 --- !u!1 &2114766530

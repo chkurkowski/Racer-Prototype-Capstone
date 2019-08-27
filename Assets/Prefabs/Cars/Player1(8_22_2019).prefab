@@ -15155,7 +15155,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
+  moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -38658,7 +38658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugHeatText: {fileID: 0}
-  heatCurrent: 100
+  heatCurrent: 0
   heatStallLimit: 100
   heatExplodeLimit: 120
   cooldownRate: 1
@@ -38848,7 +38848,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
+  moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -48237,7 +48237,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
+  moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
