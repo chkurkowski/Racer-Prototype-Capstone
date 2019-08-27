@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1890526158584681215}
   - component: {fileID: 1890526158584681186}
   m_Layer: 0
-  m_Name: SludgePickup
+  m_Name: LavaPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1890526158584681208}
   m_LocalRotation: {x: 0.46193978, y: 0.19134173, z: 0.19134173, w: 0.84462327}
   m_LocalPosition: {x: 46.8, y: 5, z: 75.5}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

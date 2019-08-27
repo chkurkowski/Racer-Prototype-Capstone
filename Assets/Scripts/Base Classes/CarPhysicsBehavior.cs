@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CarPhysicsBehavior : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class CarPhysicsBehavior : MonoBehaviour
     //public List<SuspensionPoint> suspension;
     //public List<SuspensionPoint> drivingPoints;
     private CarHeatManager carHeatInfo;
+    public Image carSpeedUI;
     //Downward force applied to vehicle to keep it on the ground
     public float downForce = 100;
 
@@ -103,6 +105,9 @@ public class CarPhysicsBehavior : MonoBehaviour
 
         //clamps braking and throttle inputs to needed values
         driveInput = Mathf.Clamp(driveInput, -reverseSpeed, 1);
+
+    
+
         brakeInput = Mathf.Clamp(brakeInput, -1, 0);
         //clamping for controller triggers, probably isn't needed.
         forwardInput = Mathf.Clamp(forwardInput, -reverseSpeed, 1);
@@ -206,6 +211,15 @@ public class CarPhysicsBehavior : MonoBehaviour
             currentDriveForce = Mathf.Clamp (currentDriveForce, 0, driveForce);
         }
         carRB.AddForce(flatFwd * currentDriveForce); //used for W and S and arrow keys
+       
+        if(gameObject.GetComponent<BoostBehavior>().canBoost == false)
+        {
+            carSpeedUI.fillAmount = 1;
+        }
+        else
+        {
+            carSpeedUI.fillAmount = (forwardInput * 58) / 100;
+        }
     }
 
     //applies backward force based on inputs
