@@ -108,17 +108,6 @@ public class CarPhysicsBehavior : MonoBehaviour
         forwardInput = Mathf.Clamp(forwardInput, -reverseSpeed, 1);
         // backwardInput = Mathf.Clamp(backwardInput, 0, 1);
 
-        //Testing method, launches the car into the air on button press to test suspension
-      /*  if (Input.GetKeyDown(KeyCode.Space))
-        {
-            carRB.AddForceAtPosition(Vector3.up * 15,
-                new Vector3(transform.position.x + (Random.value * 5), transform.position.y + (Random.value * 5), transform.position.z + (Random.value * 5)),
-                ForceMode.Impulse);
-        } */ 
-
-
-
-
         //Consolidated suspension system into this script. Draws a downward raycast at each point to check for collisions and applies an upward force if one is found.
         for (int i = 0; i < hoverPoints.Length; i++)
         {
@@ -204,12 +193,12 @@ public class CarPhysicsBehavior : MonoBehaviour
             currentDriveForce += acceleration * Time.fixedDeltaTime;
             currentDriveForce = Mathf.Clamp (currentDriveForce, 0, driveForce);
         }
-        else if (forwardInput < 0)
+        else if (forwardInput < 0 )
         {
             currentDriveForce -= (deceleration + 100) * Time.fixedDeltaTime;
             currentDriveForce = Mathf.Clamp (currentDriveForce, -200f, driveForce);
         }
-        else if (forwardInput <= deadZone && forwardInput >= 0)
+        else if (forwardInput <= deadZone && forwardInput >= 0 || carHeatInfo.heatCurrent >= carHeatInfo.heatStallLimit)
         {
             if (currentDriveForce > 0) {
                 currentDriveForce -= deceleration * Time.fixedDeltaTime;
