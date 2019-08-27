@@ -12,7 +12,7 @@ public class BoostBehavior : MonoBehaviour
     private float iniAccelaration;
     private float iniSpeed;
     private float iniTurnForce;
-    private bool canBoost;
+    public bool canBoost;
     private CarPhysicsBehavior carScript;
     private CarHeatManager carHeatInfo;
 

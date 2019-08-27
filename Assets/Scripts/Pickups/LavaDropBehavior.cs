@@ -26,8 +26,7 @@ public class LavaDropBehavior : MonoBehaviour
     }
 
     public void OnTriggerEnter(Collider other)
-    {
-     
+    {    
         if(other.GetComponent<CarHeatManager>() != null)
         {
             if (other.gameObject != immunePlayer)
