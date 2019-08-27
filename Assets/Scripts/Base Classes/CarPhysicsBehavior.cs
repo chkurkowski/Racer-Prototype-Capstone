@@ -51,8 +51,6 @@ public class CarPhysicsBehavior : MonoBehaviour
     //checks how "compressed" each point is, 0 for fully extended, 1 for fully compressed
     private float compression;
 
-    private float appliedTurnForce;
-
 
     GameObject suspensionPoint;
 
@@ -227,13 +225,13 @@ public class CarPhysicsBehavior : MonoBehaviour
     //applies a torque to rotate the vehicle the appropriate amount
     public void turn()
     {
-        appliedTurnForce = turnForce * (currentDriveForce / 300);
+        //appliedTurnForce = turnForce * (currentDriveForce / 300);
         //Vector3 turnVec = ((transform.up * turnForce) * turnInput) * 800.0f;
 
         //carRB.AddTorque(turnVec);
         if (turnInput != 0)
         {
-            carRB.AddRelativeTorque(Vector3.up * turnInput * appliedTurnForce);
+            carRB.AddRelativeTorque(Vector3.up * turnInput * turnForce);
         }
     }
 
