@@ -15,6 +15,7 @@ public class BoostBehavior : MonoBehaviour
     public bool canBoost;
     private CarPhysicsBehavior carScript;
     private CarHeatManager carHeatInfo;
+    
 
     //string for controller support
     public string boostAxis;

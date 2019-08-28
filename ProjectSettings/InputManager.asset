@@ -20,7 +20,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 0
+    joyNum: 1
   - serializedVersion: 3
     m_Name: VerticalForwardP1
     descriptiveName: 
@@ -76,7 +76,7 @@ InputManager:
     negativeButton: 
     positiveButton: right shift
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick button 16
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -294,7 +294,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: HorizontalP2
+    m_Name: HorizontalPP
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: left
@@ -323,7 +323,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 0
-    axis: 9
+    axis: 5
     joyNum: 2
   - serializedVersion: 3
     m_Name: VerticalBackwardsP1
@@ -342,7 +342,7 @@ InputManager:
     axis: 4
     joyNum: 1
   - serializedVersion: 3
-    m_Name: VerticalBackwards
+    m_Name: VerticalBackwardsP2
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
@@ -355,8 +355,8 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 8
-    joyNum: 1
+    axis: 4
+    joyNum: 2
   - serializedVersion: 3
     m_Name: Vertical
     descriptiveName: 
@@ -373,3 +373,51 @@ InputManager:
     type: 2
     axis: 8
     joyNum: 15
+  - serializedVersion: 3
+    m_Name: HorizontalP2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: down
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.001
+    sensitivity: 0.5
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: AbilityP2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 18
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.001
+    sensitivity: 0.5
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
+    m_Name: PickupP2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 19
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.001
+    sensitivity: 0.5
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2

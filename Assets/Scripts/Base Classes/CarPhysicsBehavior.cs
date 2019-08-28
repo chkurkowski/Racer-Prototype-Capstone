@@ -97,7 +97,7 @@ public class CarPhysicsBehavior : MonoBehaviour
 
        // Debug.Log("Current Drive Force: " + currentDriveForce);
         // driveInput = brakeInput = Input.GetAxis(verticalAxis);
-        turnInput = Input.GetAxis("HorizontalP1");
+        turnInput = Input.GetAxis(horizontalAxis);
 
         forwardInput = Input.GetAxis(verticalForwardAxis);
         backwardInput = Input.GetAxis(verticalBackwardAxis);
