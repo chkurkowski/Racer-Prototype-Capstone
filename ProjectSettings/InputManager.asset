@@ -35,7 +35,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 4
+    axis: 9
     joyNum: 1
   - serializedVersion: 3
     m_Name: AbilityP1
@@ -323,7 +323,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 4
+    axis: 9
     joyNum: 2
   - serializedVersion: 3
     m_Name: VerticalBackwardsP1
@@ -339,7 +339,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 3
+    axis: 8
     joyNum: 1
   - serializedVersion: 3
     m_Name: VerticalBackwardsP2
@@ -355,7 +355,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 3
+    axis: 8
     joyNum: 2
   - serializedVersion: 3
     m_Name: Vertical
