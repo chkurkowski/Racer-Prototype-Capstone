@@ -97,7 +97,7 @@ public class CarPhysicsBehavior : MonoBehaviour
 
        // Debug.Log("Current Drive Force: " + currentDriveForce);
         // driveInput = brakeInput = Input.GetAxis(verticalAxis);
-        turnInput = Input.GetAxis("Horizontal");
+        turnInput = Input.GetAxis("HorizontalP1");
 
         forwardInput = Input.GetAxis(verticalForwardAxis);
         backwardInput = Input.GetAxis(verticalBackwardAxis);
@@ -110,7 +110,7 @@ public class CarPhysicsBehavior : MonoBehaviour
 
         brakeInput = Mathf.Clamp(brakeInput, -1, 0);
         //clamping for controller triggers, probably isn't needed.
-        forwardInput = Mathf.Clamp(forwardInput, -reverseSpeed, 1);
+        //forwardInput = Mathf.Clamp(forwardInput, -reverseSpeed, 1);
         // backwardInput = Mathf.Clamp(backwardInput, 0, 1);
 
         //Consolidated suspension system into this script. Draws a downward raycast at each point to check for collisions and applies an upward force if one is found.
@@ -198,7 +198,8 @@ public class CarPhysicsBehavior : MonoBehaviour
             currentDriveForce += acceleration * Time.fixedDeltaTime;
             currentDriveForce = Mathf.Clamp (currentDriveForce, 0, driveForce);
         }
-        else if (forwardInput < 0 )
+        else if (  (forwardInput < 0 && currentDriveForce > 0f) 
+                || (backwardInput > 0)                           )
         {
             currentDriveForce -= (deceleration + 100) * Time.fixedDeltaTime;
             currentDriveForce = Mathf.Clamp (currentDriveForce, -200f, driveForce);
