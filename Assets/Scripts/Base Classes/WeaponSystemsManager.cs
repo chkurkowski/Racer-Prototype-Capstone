@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponSystemsManager : MonoBehaviour
 {
@@ -19,8 +20,21 @@ public class WeaponSystemsManager : MonoBehaviour
     public float lavaDropRate = .5f;
     public float lavaDropDuration = 3f;
     private float lavaCurrentDuration = 0;
-    public bool lavaSludgePickup = false;
+    public bool hasLavaPickup = false;
     public bool isUsingPickup = false;
+
+
+    [Header("UI Stuff")]
+    public Image abilityCooldownUI;
+    public Image pickupSlot;
+    public Sprite blankPickup;
+    public Sprite lavaBombPickup;
+
+    public void Start()
+    {
+        pickupSlot.sprite = blankPickup;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -32,12 +46,13 @@ public class WeaponSystemsManager : MonoBehaviour
 
             canUseAbility = false;
             StartCoroutine(AbilityCooldown());
+            
         }
 
-        if(Input.GetButtonDown(pickupAxis) && lavaSludgePickup)
+        if(Input.GetButtonDown(pickupAxis) && hasLavaPickup)
         {
             isUsingPickup = true;
-            lavaSludgePickup = false;
+            hasLavaPickup = false;
             InvokeRepeating("DropLava", 0, lavaDropRate);
         }
 
@@ -51,6 +66,15 @@ public class WeaponSystemsManager : MonoBehaviour
                 lavaCurrentDuration = 0f;
             }
         }   
+
+        if(hasLavaPickup)
+        {
+            pickupSlot.sprite = lavaBombPickup;
+        }
+        else
+        {
+            pickupSlot.sprite = blankPickup;
+        }
     }
 
     public void DropLava()
@@ -61,7 +85,18 @@ public class WeaponSystemsManager : MonoBehaviour
 
     private IEnumerator AbilityCooldown()
     {
-        yield return new WaitForSecondsRealtime(abilityRecharge);
+
+        float tempTime = abilityRecharge;
+
+        while (tempTime > 0)
+        {
+            Debug.Log(tempTime);
+            tempTime -= Time.deltaTime;
+            Mathf.Lerp(0, 1, tempTime);
+            abilityCooldownUI.fillAmount = tempTime / abilityRecharge; 
+            yield return null;
+        }
+   
         canUseAbility = true;
 
     }
