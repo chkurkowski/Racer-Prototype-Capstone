@@ -51,11 +51,11 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -88,7 +88,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -19040,6 +19040,7 @@ GameObject:
   - component: {fileID: 147271717905107921}
   - component: {fileID: 7974311930318160084}
   - component: {fileID: 3864165596329656260}
+  - component: {fileID: 842013785}
   m_Layer: 0
   m_Name: Flames
   m_TagString: Untagged
@@ -23603,6 +23604,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &842013785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4085102479618284385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a767db91037aeb498da49d2b6190445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theVehicleScript: {fileID: 8829525317950555297}
 --- !u!1 &5154214800789146505
 GameObject:
   m_ObjectHideFlags: 0
@@ -43235,7 +43249,7 @@ MonoBehaviour:
   heatCurrent: 0
   heatStallLimit: 100
   heatExplodeLimit: 120
-  cooldownRate: 1
+  cooldownRate: 3.5
 --- !u!114 &8829525317950555297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43248,6 +43262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0420b097e0f6a1d4b8f5d3582bb526de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carSpeedUI: {fileID: 0}
   downForce: 200
   drivePos: {fileID: 8829525316700077924}
   driveForce: 600
@@ -43289,6 +43304,7 @@ MonoBehaviour:
   boostAmount: 200
   accelerationAdd: 100
   boostTurnForce: 150
+  canBoost: 0
   boostAxis: AButtonP1
   camera: {fileID: 0}
   boostParticleEffect: {fileID: 8829525316943991964}
@@ -43311,7 +43327,8 @@ MonoBehaviour:
   canUseAbility: 1
   abilityAxis: FireP1
   pickupAxis: FireP2
-  lavaDropObject: {fileID: 0}
+  lavaDropObject: {fileID: 7767361534630531352, guid: 0e08a5e41159fca45b8b80a57b658299,
+    type: 3}
   lavaDropRate: 0.5
   lavaDropDuration: 3
   lavaSludgePickup: 0
