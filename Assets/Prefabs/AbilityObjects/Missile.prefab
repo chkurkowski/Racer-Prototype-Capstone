@@ -51,10 +51,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missileSpeed: 400
-  missileDamage: 75
+  missileDamage: 120
   explosionPrefab: {fileID: 5672782229648065796, guid: 2092b8a974fc2384bb786f43e8e53109,
     type: 3}
   fuseTime: 5
+  missileLifeTime: 3
 --- !u!33 &7655482786058017385
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -429,6 +430,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 453666121410478559}
     m_Modifications:
+    - target: {fileID: 1000012118400646, guid: 3123da49cb81147489b444f2749aba47, type: 3}
+      propertyPath: m_Name
+      value: FlameThrowerEffect
+      objectReference: {fileID: 0}
     - target: {fileID: 4000013285487154, guid: 3123da49cb81147489b444f2749aba47, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -484,10 +489,6 @@ PrefabInstance:
     - target: {fileID: 4000013285487154, guid: 3123da49cb81147489b444f2749aba47, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5000001
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000012118400646, guid: 3123da49cb81147489b444f2749aba47, type: 3}
-      propertyPath: m_Name
-      value: FlameThrowerEffect
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3123da49cb81147489b444f2749aba47, type: 3}

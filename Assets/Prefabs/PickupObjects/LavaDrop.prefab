@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 7614580002800076185}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 7613319489221341173}
   - {fileID: 7612931248353893451}
@@ -4584,7 +4584,7 @@ Transform:
   m_GameObject: {fileID: 7614649483015099911}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1.07}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 7618301503542386675}
   m_RootOrder: 1
@@ -9395,7 +9395,7 @@ Transform:
   m_GameObject: {fileID: 7614803422224264143}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.028, y: 0.112, z: 0.15}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 7618301503542386675}
   m_RootOrder: 0
@@ -14061,7 +14061,7 @@ Transform:
   m_GameObject: {fileID: 7767361534630531352}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 46.795563, y: 4.993726, z: 71.66}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 7618301503542386675}
   m_Father: {fileID: 0}
@@ -14126,9 +14126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   immunePlayer: {fileID: 0}
-  shrinkRate: 0.05
+  shrinkRate: 0.03
   shrinkAmount: 0.05
-  lavaDamage: 20
+  lavaDamage: 40
 --- !u!135 &7767361534630531355
 SphereCollider:
   m_ObjectHideFlags: 0
