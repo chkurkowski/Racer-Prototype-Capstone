@@ -25,9 +25,9 @@ public class LavaPickupBehavior : MonoBehaviour
         gameObjectMesh = gameObject.GetComponent<MeshRenderer>();
 
         yUpperLimit = gameObject.transform.localPosition.y + yMaxOffset;
-        Debug.Log(yUpperLimit);
+       // Debug.Log(yUpperLimit);
         yLowerLimit = gameObject.transform.localPosition.y - yMinOffset;
-        Debug.Log(yLowerLimit);
+       // Debug.Log(yLowerLimit);
         InvokeRepeating("ObjectBounce", 0 , animateSpeed);
     }
 
@@ -66,7 +66,7 @@ public class LavaPickupBehavior : MonoBehaviour
     {
         if (other.gameObject.GetComponent<WeaponSystemsManager>() != null)
         {
-            other.gameObject.GetComponent<WeaponSystemsManager>().lavaSludgePickup = true;
+            other.gameObject.GetComponent<WeaponSystemsManager>().hasLavaPickup = true;
             gameObjectCollider.enabled = false;
             gameObjectMesh.enabled = false;
             Invoke("ResetPickup", pickupRecharge);
