@@ -44,6 +44,6 @@ public class CarHeatManager : MonoBehaviour
         }
        
         heatImage.fillAmount = ((heatCurrent * 100) / 120) /100;
-        Debug.Log("Fillamount: " + heatImage.fillAmount);
+     //   Debug.Log("Fillamount: " + heatImage.fillAmount);
     }
 }
