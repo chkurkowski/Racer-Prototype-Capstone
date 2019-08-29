@@ -10,8 +10,8 @@ public class PauseGame : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape)
-		||	Input.GetButtonDown("Pause1")
-		||	Input.GetButtonDown("Pause2"))
+		||	Input.GetButtonDown("PauseP1")
+		||	Input.GetButtonDown("PauseP2"))
         {
         	pausePanel.SetActive(!pausePanel.activeSelf);
 
