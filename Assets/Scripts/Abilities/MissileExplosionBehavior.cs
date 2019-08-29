@@ -44,11 +44,7 @@ public class MissileExplosionBehavior : MonoBehaviour
         }
         else if(collision.gameObject == immunePlayer)
         {
-          // Debug.Log("Player Detected by explosion!");
-           // if (collision.GetComponent<CarHeatManager>() != null)
-           // {
-             //   collision.GetComponent<CarHeatManager>().heatCurrent += explosionDamage;
-           // }
+
         }
     }
 }
