@@ -12991,7 +12991,7 @@ PrefabInstance:
     - target: {fileID: 1890526158584681187, guid: 995e0daa59a99904585d9c8d02eb7926,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1890526158584681187, guid: 995e0daa59a99904585d9c8d02eb7926,
         type: 3}
@@ -13311,7 +13311,7 @@ PrefabInstance:
     - target: {fileID: 4022542296555097862, guid: 3db8e4d54a100bf478e4df86a959a9f4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4022542296555097862, guid: 3db8e4d54a100bf478e4df86a959a9f4,
         type: 3}
@@ -14890,7 +14890,7 @@ PrefabInstance:
     - target: {fileID: 775676765654723354, guid: 54d86e26683fd49ceb879a39ae5231ef,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 775676765654723354, guid: 54d86e26683fd49ceb879a39ae5231ef,
         type: 3}
@@ -28627,9 +28627,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalAxis: HorizontalP1
-  m_VerticalAxis: VerticalForward
+  m_VerticalAxis: VerticalForwardP1
   m_SubmitButton: AButtonP1
-  m_CancelButton: AButtonP2
+  m_CancelButton: AbilityP1
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
@@ -33181,7 +33181,7 @@ PrefabInstance:
     - target: {fileID: 8829525317950555300, guid: 94b20b19c7095ea4dab2f55de8f7d12b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8829525317950555300, guid: 94b20b19c7095ea4dab2f55de8f7d12b,
         type: 3}
@@ -35667,7 +35667,7 @@ PrefabInstance:
     - target: {fileID: 775676765654723354, guid: 54d86e26683fd49ceb879a39ae5231ef,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 775676765654723354, guid: 54d86e26683fd49ceb879a39ae5231ef,
         type: 3}
